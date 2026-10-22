@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +9,7 @@
 body {
     background-color: #f8fafc;
     color: #1e293b;
-    padding-top: 100px; /* Espacio para que la barra fija no tape el contenido */
+    padding-top: 100px;
     padding-bottom: 40px;
     padding-left: 20px;
     padding-right: 20px;
@@ -29,6 +30,7 @@ body {
     align-items: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     z-index: 1000;
+    cursor: pointer;
 }
 
 .cart-info {
@@ -54,184 +56,167 @@ body {
     color: #4ade80;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.header h1 {
-    font-size: 2.5rem;
-    letter-spacing: 4px;
-    color: #0f172a;
-    font-weight: 800;
-}
-
-.header p {
-    font-size: 0.85rem;
-    color: #64748b;
-    letter-spacing: 6px;
-    margin-top: 6px;
-    font-weight: 600;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.search-box {
-    margin-bottom: 35px;
-}
-
-.search-box input {
+/* Panel Lateral Desplegable (Drawer) */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
     width: 100%;
-    padding: 16px 22px;
-    font-size: 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    outline: none;
+    max-width: 380px;
+    height: 100%;
     background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    transition: all 0.25s ease;
-}
-
-.search-box input:focus {
-    border-color: #16a34a;
-    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
-}
-
-/* Grilla de Tarjetas */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: #ffffff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
     display: flex;
     flex-direction: column;
-    border: 1px solid #f1f5f9;
+    transition: right 0.3s ease-in-out;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08), 0 12px 15px -8px rgba(0, 0, 0, 0.04);
+.cart-drawer.open {
+    right: 0;
 }
 
-.card-img-container {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background-color: #f1f5f9;
-}
-
-.card img {
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1050;
+    display: none;
 }
 
-.card:hover img {
-    transform: scale(1.06);
+.drawer-overlay.open {
+    display: block;
 }
 
-.category {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: #15803d;
-    padding: 6px 12px;
-    border-radius: 30px;
-    letter-spacing: 0.8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.06);
-}
-
-.card-content {
-    padding: 22px;
+.drawer-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.card h2 {
+.drawer-header h3 {
     font-size: 1.2rem;
     color: #0f172a;
-    font-weight: 700;
-    letter-spacing: -0.2px;
 }
 
-.options-container {
+.close-drawer {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.drawer-items {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 15px;
 }
 
-.options-container label {
-    font-size: 0.75rem;
-    color: #64748b;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
+.empty-cart-msg {
+    text-align: center;
+    color: #94a3b8;
+    margin-top: 40px;
 }
 
-.weight-select {
-    width: 100%;
-    padding: 10px 14px;
+.cart-item-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
-    border: 1px solid #cbd5e1;
-    background-color: #f8fafc;
-    color: #334155;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-info h4 {
     font-size: 0.95rem;
-    font-weight: 500;
-    outline: none;
+    color: #0f172a;
+}
+
+.cart-item-info p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.btn-remove-item {
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s;
-}
-
-.weight-select:focus {
-    border-color: #16a34a;
-    background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
-}
-
-.price-action {
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px dashed #e2e8f0;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.price {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #15803d;
-}
-
-.btn-add {
-    background-color: #16a34a;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
+    justify-content: center;
     transition: background 0.2s;
 }
 
-.btn-add:hover {
-    background-color: #15803d;
+.btn-remove-item:hover {
+    background: #fecaca;
 }
+
+.drawer-footer {
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.drawer-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+.btn-whatsapp:hover {
+    background-color: #20ba5a;
+}
+
+/* Resto de estilos del diseño anterior */
+.header { text-align: center; margin-bottom: 40px; }
+.header h1 { font-size: 2.5rem; letter-spacing: 4px; color: #0f172a; font-weight: 800; }
+.header p { font-size: 0.85rem; color: #64748b; letter-spacing: 6px; margin-top: 6px; font-weight: 600; }
+.container { max-width: 1100px; margin: 0 auto; }
+.search-box { margin-bottom: 35px; }
+.search-box input { width: 100%; padding: 16px 22px; font-size: 1rem; border: 1px solid #e2e8f0; border-radius: 16px; outline: none; background: #ffffff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.card { background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; border: 1px solid #f1f5f9; }
+.card-img-container { position: relative; width: 100%; height: 200px; background-color: #f1f5f9; }
+.card img { width: 100%; height: 100%; object-fit: cover; }
+.category { position: absolute; top: 14px; left: 14px; background: rgba(255, 255, 255, 0.92); font-size: 0.65rem; font-weight: 800; color: #15803d; padding: 6px 12px; border-radius: 30px; }
+.card-content { padding: 22px; display: flex; flex-direction: column; gap: 16px; flex-grow: 1; }
+.card h2 { font-size: 1.2rem; color: #0f172a; font-weight: 700; }
+.weight-select { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid #cbd5e1; background-color: #f8fafc; font-size: 0.95ny; }
+.price-action { margin-top: auto; padding-top: 14px; border-top: 1px dashed #e2e8f0; display: flex; align-items: center; justify-content: space-between; }
+.price { font-size: 1.25rem; font-weight: 800; color: #15803d; }
+.btn-add { background-color: #16a34a; color: white; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; }
