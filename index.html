@@ -9,7 +9,7 @@
 <body>
 
     <!-- Carrito fijo superior -->
-    <div class="cart-bar" id="cart-bar">
+    <div class="cart-bar" id="cart-bar-btn">
         <div class="cart-info">
             <span class="cart-icon">🛒</span>
             <span id="cart-count">0 productos</span>
@@ -19,6 +19,25 @@
             <span id="cart-total">$0</span>
         </div>
     </div>
+
+    <!-- Panel lateral desplegable del carrito -->
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="drawer-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-drawer" id="close-drawer">&times;</button>
+        </div>
+        <div class="drawer-items" id="drawer-items">
+            <p class="empty-cart-msg">El carrito está vacío</p>
+        </div>
+        <div class="drawer-footer">
+            <div class="drawer-total-row">
+                <span>Total a pagar:</span>
+                <span id="drawer-total">$0</span>
+            </div>
+            <button class="btn-whatsapp" id="btn-whatsapp">Enviar pedido por WhatsApp 📱</button>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawer-overlay"></div>
 
     <header class="header">
         <h1>SoAr</h1>
