@@ -1,255 +1,57 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoAr Tienda Natural - Catálogo</title>
-    <style>
-        :root {
-            --primary: #2d5a27; /* Verde natural */
-            --secondary: #d97706; /* Tono semilla/nuez */
-            --bg: #f9fafb;
-            --card-bg: #ffffff;
-        }
-
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); padding: 20px; color: #1f2937; margin: 0; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 10px; }
-
-        /* Estilo del Negocio */
-        .brand-header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #e5e7eb; padding-bottom: 20px; }
-        .brand-header h1 { font-size: 3rem; color: var(--primary); margin: 0; letter-spacing: -1px; }
-        .brand-header p { font-size: 1.1rem; color: #6b7280; margin-top: 5px; text-transform: uppercase; letter-spacing: 2px; }
-
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white; padding: 0; }
-            .card { break-inside: avoid; border: 1px solid #eee !important; box-shadow: none !important; margin-bottom: 10px; }
-            .brand-header h1 { color: black; }
-        }
-
-        /* Panel Administrativo */
-        .admin-panel { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid #f3f4f6; }
-        .input-group { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 12px; margin-bottom: 20px; }
-        input { padding: 12px; border: 1px solid #d1d5db; border-radius: 10px; font-size: 1rem; }
-        
-        button { padding: 12px 20px; border-radius: 10px; border: none; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .btn-add { background: var(--primary); color: white; }
-        .btn-import { background: #059669; color: white; }
-        .btn-print { background: #374151; color: white; margin-bottom: 20px; }
-        .btn-clear { background: #fee2e2; color: #dc2626; font-size: 0.8rem; }
-
-        .search-box { width: 100%; padding: 18px; margin-bottom: 30px; border-radius: 15px; border: 2px solid #e5e7eb; font-size: 1.1rem; box-sizing: border-box; }
-
-        /* Grid de Tarjetas */
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        
-        .card { 
-            background: white; border-radius: 20px; position: relative; 
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-            transition: 0.3s; overflow: hidden; display: flex; flex-direction: column;
-            border: 1px solid #f3f4f6;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        
-        .card-img-container {
-            width: 100%;
-            height: 180px;
-            background-color: #f3f4f6;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .card:hover .card-img {
-            transform: scale(1.05);
-        }
-
-        .card-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .cat-badge { display: inline-block; align-self: flex-start; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
-        .card h3 { margin: 5px 0 10px 0; font-size: 1.25rem; color: #111827; }
-        .price-tag { font-size: 1.6rem; font-weight: 900; color: var(--primary); margin-top: auto; }
-
-        .delete-btn { 
-            position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); 
-            border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; 
-            color: #4b5563; font-weight: bold; z-index: 10; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-        .delete-btn:hover { background: #ef4444; color: white; }
-    </style>
+    <title>SoAr - Tienda Natural</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <header class="brand-header">
+    <header class="header">
         <h1>SoAr</h1>
-        <p>Tienda Natural</p>
+        <p>TIENDA NATURAL</p>
     </header>
 
-    <div class="no-print">
-        <div class="admin-panel">
-            <div class="input-group">
-                <input type="text" id="newName" placeholder="Producto (ej: Almendras)">
-                <input type="text" id="newCat" placeholder="Categoría (ej: Frutos Secos)">
-                <input type="text" id="newPrice" placeholder="Precio (ej: $1.800)">
-                <input type="text" id="newImg" placeholder="URL Imagen (Opcional)">
-                <button class="btn-add" onclick="addProduct()">Agregar</button>
-            </div>
-            <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #f3f4f6; padding-top: 20px; flex-wrap: wrap;">
-                <strong>Importar desde Excel:</strong>
-                <input type="file" id="csvFile" accept=".csv">
-                <button class="btn-import" onclick="importCSV()">Cargar CSV</button>
-                <button class="btn-clear" onclick="clearAll()" style="margin-left: auto;">Vaciar Lista</button>
-            </div>
+    <main class="container">
+        <!-- Barra de búsqueda simple -->
+        <div class="search-box">
+            <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
         </div>
 
-        <button class="btn-print" onclick="window.print()">🖨️ Imprimir Lista para Clientes</button>
-        <input type="text" id="search" class="search-box" placeholder="🔍 Buscar productos o categorías...">
-    </div>
+        <!-- Contenedor de las tarjetas de productos -->
+        <div class="product-grid" id="grid-productos">
+            <!-- Las tarjetas se cargarán dinámicamente o de forma estática -->
+            <div class="card">
+                <span class="category">FRUTOS SECOS</span>
+                <img src="https://images.unsplash.com/photo-1508061253366-f7da15bbf6e4?auto=format&fit=crop&w=400&q=80" alt="Almendras Non Pareil">
+                <div class="card-content">
+                    <h2>Almendras Non Pareil</h2>
+                    <p class="price">$1.500 <span class="unit">(100g)</span></p>
+                </div>
+            </div>
 
-    <div id="grid" class="price-grid"></div>
-</div>
+            <div class="card">
+                <span class="category">CEREALES</span>
+                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="Avena Tradicional">
+                <div class="card-content">
+                    <h2>Avena Tradicional</h2>
+                    <p class="price">$400 <span class="unit">(500g)</span></p>
+                </div>
+            </div>
 
-<script>
-    // Detección automática de imagen estética según el nombre o categoría si no se pasa URL
-    function getAutoImage(name, cat) {
-        const text = (name + " " + cat).toLowerCase();
-        if (text.includes("almendra")) return "https://images.unsplash.com/photo-1508061253366-f7da158b6d96?w=500&q=80";
-        if (text.includes("avena")) return "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80";
-        if (text.includes("mix") || text.includes("fruto")) return "https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=500&q=80";
-        if (text.includes("nuez") || text.includes("nueces")) return "https://images.unsplash.com/photo-1543208541-0059d64222f7?w=500&q=80";
-        if (text.includes("semilla") || text.includes("chia") || text.includes("girasol")) return "https://images.unsplash.com/photo-1514733670139-4d87a1941d55?w=500&q=80";
-        if (text.includes("harina")) return "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80";
-        if (text.includes("miel")) return "https://images.unsplash.com/photo-1587049352847-81a56d773cae?w=500&q=80";
-        
-        // Imagen natural por defecto
-        return "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&q=80";
-    }
+            <div class="card">
+                <span class="category">FRUTOS SECOS</span>
+                <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=400&q=80" alt="Mix Clásico">
+                <div class="card-content">
+                    <h2>Mix Clásico</h2>
+                    <p class="price">$1.200 <span class="unit">(100g)</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    // Datos iniciales de demostración en caso de que no haya nada en localStorage
-    const defaultProducts = [
-        { id: 1, name: "Almendras Non Pareil", cat: "Frutos Secos", price: "$1.500 (100g)", img: "https://images.unsplash.com/photo-1508061253366-f7da158b6d96?w=500&q=80" },
-        { id: 2, name: "Mix Clásico", cat: "Frutos Secos", price: "$1.200 (100g)", img: "https://images.unsplash.com/photo-1596560548464-f010549b84d7?w=500&q=80" },
-        { id: 3, name: "Avena Tradicional", cat: "Cereales", price: "$400 (500g)", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&q=80" }
-    ];
-
-    let products = JSON.parse(localStorage.getItem('soarData'));
-    if (!products || products.length === 0) {
-        products = defaultProducts;
-        localStorage.setItem('soarData', JSON.stringify(products));
-    }
-
-    function getColor(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        return `hsl(${Math.abs(hash) % 360}, 60%, 35%)`; 
-    }
-
-    function saveAndRender() {
-        localStorage.setItem('soarData', JSON.stringify(products));
-        render();
-    }
-
-    function render(filter = "") {
-        const grid = document.getElementById('grid');
-        grid.innerHTML = "";
-        
-        products.sort((a, b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
-
-        products.forEach(p => {
-            if(p.name.toLowerCase().includes(filter.toLowerCase()) || p.cat.toLowerCase().includes(filter.toLowerCase())) {
-                const color = getColor(p.cat.toLowerCase());
-                const imgSrc = p.img || getAutoImage(p.name, p.cat);
-                
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <button class="delete-btn no-print" onclick="deleteProduct(${p.id}, '${p.name}')">✕</button>
-                    <div class="card-img-container">
-                        <img class="card-img" src="${imgSrc}" alt="${p.name}" loading="lazy">
-                    </div>
-                    <div class="card-body">
-                        <span class="cat-badge" style="background:${color}15; color:${color}; border:1px solid ${color}30">${p.cat}</span>
-                        <h3>${p.name}</h3>
-                        <span class="price-tag">${p.price}</span>
-                    </div>
-                `;
-                grid.appendChild(card);
-            }
-        });
-    }
-
-    function addProduct() {
-        const name = document.getElementById('newName').value.trim();
-        const cat = document.getElementById('newCat').value.trim() || "Varios";
-        const price = document.getElementById('newPrice').value.trim();
-        const img = document.getElementById('newImg').value.trim();
-
-        if(name && price) {
-            products.push({ id: Date.now(), name, cat, price, img: img || getAutoImage(name, cat) });
-            saveAndRender();
-            document.getElementById('newName').value = "";
-            document.getElementById('newPrice').value = "";
-            document.getElementById('newImg').value = "";
-        }
-    }
-
-    function deleteProduct(id, nombre) {
-        if(confirm(`¿Eliminar "${nombre}"?`)) {
-            products = products.filter(p => p.id !== id);
-            saveAndRender();
-        }
-    }
-
-    function clearAll() {
-        if(confirm("¿Borrar todos los productos de SoAr?")) { products = []; saveAndRender(); }
-    }
-
-    function importCSV() {
-        const file = document.getElementById('csvFile').files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.readAsText(file, "UTF-8"); 
-        reader.onload = function(e) {
-            const lines = e.target.result.split(/\r?\n/);
-            lines.forEach(line => {
-                const sep = line.includes(';') ? ';' : ',';
-                const cols = line.split(sep);
-                if (cols.length >= 2 && cols[0].trim() !== "") {
-                    const name = cols[0].trim();
-                    const cat = cols[1]?.trim() || "Varios";
-                    const price = cols[2]?.trim() || "-";
-                    const img = cols[3]?.trim() || getAutoImage(name, cat);
-
-                    products.push({ 
-                        id: Date.now() + Math.random(), 
-                        name, 
-                        cat, 
-                        price,
-                        img
-                    });
-                }
-            });
-            saveAndRender();
-            alert("Productos cargados exitosamente");
-        };
-    }
-
-    document.getElementById('search').addEventListener('input', (e) => render(e.target.value));
-    render();
-</script>
-
+    <script src="app.js"></script>
 </body>
 </html>
