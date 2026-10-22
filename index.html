@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Carrito fijo superior -->
+    <div class="cart-bar" id="cart-bar">
+        <div class="cart-info">
+            <span class="cart-icon">🛒</span>
+            <span id="cart-count">0 productos</span>
+        </div>
+        <div class="cart-total-container">
+            <span>Total:</span>
+            <span id="cart-total">$0</span>
+        </div>
+    </div>
 
     <header class="header">
         <h1>SoAr</h1>
@@ -23,7 +35,7 @@
         <div class="product-grid" id="grid-productos">
             
             <!-- Tarjeta 1 -->
-            <div class="card">
+            <div class="card" data-base-price="1500">
                 <div class="card-img-container">
                     <span class="category">FRUTOS SECOS</span>
                     <img src="https://images.unsplash.com/photo-1508061253366-f7da15bbf6e4?auto=format&fit=crop&w=400&q=80" alt="Almendras Non Pareil">
@@ -32,23 +44,24 @@
                     <h2>Almendras Non Pareil</h2>
                     
                     <div class="options-container">
-                        <label for="peso-1">Presentación:</label>
-                        <select id="peso-1" class="weight-select">
+                        <label>Presentación:</label>
+                        <select class="weight-select">
                             <option value="100">100g</option>
                             <option value="250">250g</option>
                             <option value="500">500g</option>
-                            <option value="1000">1 kg</option>
+                            <option value="1000" selected>1 kg</option>
                         </select>
                     </div>
 
                     <div class="price-action">
-                        <span class="price">$1.500</span>
+                        <span class="price product-price">$1.500</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Tarjeta 2 -->
-            <div class="card">
+            <div class="card" data-base-price="800">
                 <div class="card-img-container">
                     <span class="category">CEREALES</span>
                     <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="Avena Tradicional">
@@ -57,8 +70,8 @@
                     <h2>Avena Tradicional</h2>
                     
                     <div class="options-container">
-                        <label for="peso-2">Presentación:</label>
-                        <select id="peso-2" class="weight-select">
+                        <label>Presentación:</label>
+                        <select class="weight-select">
                             <option value="100">100g</option>
                             <option value="250">250g</option>
                             <option value="500" selected>500g</option>
@@ -67,13 +80,14 @@
                     </div>
 
                     <div class="price-action">
-                        <span class="price">$400</span>
+                        <span class="price product-price">$400</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
 
             <!-- Tarjeta 3 -->
-            <div class="card">
+            <div class="card" data-base-price="1200">
                 <div class="card-img-container">
                     <span class="category">FRUTOS SECOS</span>
                     <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=400&q=80" alt="Mix Clásico">
@@ -82,17 +96,18 @@
                     <h2>Mix Clásico</h2>
                     
                     <div class="options-container">
-                        <label for="peso-3">Presentación:</label>
-                        <select id="peso-3" class="weight-select">
+                        <label>Presentación:</label>
+                        <select class="weight-select">
                             <option value="100">100g</option>
                             <option value="250">250g</option>
                             <option value="500">500g</option>
-                            <option value="1000">1 kg</option>
+                            <option value="1000" selected>1 kg</option>
                         </select>
                     </div>
 
                     <div class="price-action">
-                        <span class="price">$1.200</span>
+                        <span class="price product-price">$1.200</span>
+                        <button class="btn-add">Agregar</button>
                     </div>
                 </div>
             </div>
