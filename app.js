@@ -60,53 +60,17 @@ const productos = [
   { "id": 59, "nombre": "Polvo p/ hornear", "categoria": "condimentos", "precio": 1200 },
   { "id": 60, "nombre": "Provenzal P1 c/ Ajo Nacional", "categoria": "condimentos", "precio": 1700 },
   { "id": 61, "nombre": "Puerro molido", "categoria": "condimentos", "precio": 3400 },
-  {
-    "id": 62,
-    "nombre": "Remolacha en Polvo",
-    "categoria": "condimentos",
-    "precio": 2000
-  },
-  {
-    "id": 63,
-    "nombre": "Salvia",
-    "categoria": "condimentos",
-    "precio": 1700
-  },
-  {
-    "id": 64,
-    "nombre": "Sopa juliana",
-    "categoria": "condimentos",
-    "precio": 2400
-  },
-  {
-    "id": 65,
-    "nombre": "Tomate en Polvo",
-    "categoria": "condimentos",
-    "precio": 4000
-  },
-  {
-    "id": 66,
-    "nombre": "Tomillo Cultivado Nacional",
-    "categoria": "condimentos",
-    "precio": 1500
-  },
-  {
-    "id": 67,
-    "nombre": "Zanahoria en Polvo",
-    "categoria": "condimentos",
-    "precio": 1900
-  },
-  {
-    "id": 68,
-    "nombre": "Zapallo Polvo",
-    "categoria": "condimentos",
-    "precio": 2000
-  }
+  { "id": 62, "nombre": "Remolacha en Polvo", "categoria": "condimentos", "precio": 2000 },
+  { "id": 63, "nombre": "Salvia", "categoria": "condimentos", "precio": 1700 },
+  { "id": 64, "nombre": "Sopa juliana", "categoria": "condimentos", "precio": 2400 },
+  { "id": 65, "nombre": "Tomate en Polvo", "categoria": "condimentos", "precio": 4000 },
+  { "id": 66, "nombre": "Tomillo Cultivado Nacional", "categoria": "condimentos", "precio": 1500 },
+  { "id": 67, "nombre": "Zanahoria en Polvo", "categoria": "condimentos", "precio": 1900 },
+  { "id": 68, "nombre": "Zapallo Polvo", "categoria": "condimentos", "precio": 2000 }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
-    const container = document.getElementById('product-container') || document.querySelector('.catalog-grid') || document.body; 
     const cartBarBtn = document.getElementById('cart-bar-btn');
     const cartDrawer = document.getElementById('cart-drawer');
     const drawerOverlay = document.getElementById('drawer-overlay');
@@ -118,17 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnWhatsapp = document.getElementById('btn-whatsapp');
     const buscador = document.getElementById('buscador');
 
-    // Función para renderizar el catálogo dinámicamente
     function renderCatalog(items) {
-        // Buscamos si hay un contenedor específico en el HTML, sino creamos uno o usamos el main
-        let grid = document.getElementById('product-grid');
-        if (!grid) {
-            grid = document.createElement('div');
-            grid.id = 'product-grid';
-            grid.className = 'grid-container';
-            // Lo insertamos antes del footer o al principio si no hay estructura previa
-            document.body.appendChild(grid);
-        }
+        let grid = document.getElementById('grid-productos');
+        if (!grid) return;
         
         grid.innerHTML = '';
 
@@ -136,9 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'card';
             card.setAttribute('data-base-price', prod.precio);
+            // Estructura completa con imagen/icono y clases originales de la tarjeta
             card.innerHTML = `
-                <div class="card-content">
+                <div class="card-image">
                     <span class="category">${prod.categoria}</span>
+                </div>
+                <div class="card-content">
                     <h2>${prod.nombre}</h2>
                     <p class="product-price">$ ${prod.precio.toLocaleString('es-AR')}</p>
                     <select class="weight-select">
@@ -156,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initCardEvents();
     }
 
-    // Funciones para abrir y cerrar el cajón del carrito
     function toggleCart() {
         cartDrawer.classList.toggle('open');
         drawerOverlay.classList.toggle('open');
@@ -204,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicializar eventos de las tarjetas generadas
     function initCardEvents() {
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
@@ -241,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Botón de WhatsApp
     if(btnWhatsapp) {
         btnWhatsapp.addEventListener('click', () => {
             if (cart.length === 0) {
@@ -259,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Buscador interactivo
     if(buscador) {
         buscador.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
@@ -270,6 +225,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Carga inicial del catálogo completo
     renderCatalog(productos);
 });
