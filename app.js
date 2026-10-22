@@ -12,26 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnAdd = card.querySelector('.btn-add');
         const basePricePerKg = parseFloat(card.getAttribute('data-base-price'));
 
-        // Función para actualizar el precio visual según el selector de peso
         function updatePrice() {
             const weight = parseInt(select.value);
-            let calculatedPrice = 0;
-
-            if (weight === 1000) {
-                calculatedPrice = basePricePerKg;
-            } else {
-                calculatedPrice = (basePricePerKg * weight) / 1000;
-            }
-
-            priceEl.textContent = `$${calculatedPrice.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` ;
+            let calculatedPrice = weight === 1000 ? basePricePerKg : (basePricePerKg * weight) / 1000;
+            priceEl.textContent = `$${calculatedPrice.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
         }
 
         select.addEventListener('change', updatePrice);
-        updatePrice(); // Inicializar precio
+        updatePrice();
 
-        // Botón para sumar al carrito
         btnAdd.addEventListener('click', () => {
-            const weightText = select.options[select.selectedIndex].text;
             const weightValue = parseInt(select.value);
             let itemPrice = weightValue === 1000 ? basePricePerKg : (basePricePerKg * weightValue) / 1000;
 
@@ -41,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cartCountEl.textContent = `${cartCount} ${cartCount === 1 ? 'producto' : 'productos'}`;
             cartTotalEl.textContent = `$${cartTotal.toLocaleString('es-AR')}`;
 
-            // Pequeña animación visual en el botón
             btnAdd.textContent = '¡Agregado!';
             btnAdd.style.backgroundColor = '#15803d';
             setTimeout(() => {
@@ -51,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Buscador sencillo
     const buscador = document.getElementById('buscador');
     buscador.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
