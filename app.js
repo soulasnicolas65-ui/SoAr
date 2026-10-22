@@ -1,138 +1,275 @@
+const productos = [
+  { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 2000 },
+  { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 1600 },
+  { "id": 3, "nombre": "Aji Molido Extra", "categoria": "condimentos", "precio": 1400 },
+  { "id": 4, "nombre": "Ajo Granulado Nacional", "categoria": "condimentos", "precio": 2000 },
+  { "id": 5, "nombre": "Ajo Polvo Chino", "categoria": "condimentos", "precio": 1500 },
+  { "id": 6, "nombre": "Albahaca deshidratada Nacional", "categoria": "condimentos", "precio": 1700 },
+  { "id": 7, "nombre": "Anis Estrellado Entero", "categoria": "condimentos", "precio": 5600 },
+  { "id": 8, "nombre": "Anis grano", "categoria": "condimentos", "precio": 4500 },
+  { "id": 9, "nombre": "Anis molido", "categoria": "condimentos", "precio": 3000 },
+  { "id": 10, "nombre": "Apio Polvo", "categoria": "condimentos", "precio": 2400 },
+  { "id": 11, "nombre": "Azafran Español (caja de 48 capsulas)", "categoria": "condimentos", "precio": 2500 },
+  { "id": 12, "nombre": "Azucar Impalpable", "categoria": "condimentos", "precio": 500 },
+  { "id": 13, "nombre": "Bicarbonato de Sodio", "categoria": "condimentos", "precio": 800 },
+  { "id": 14, "nombre": "Butter de milanesa", "categoria": "condimentos", "precio": 1400 },
+  { "id": 15, "nombre": "Canela en Rama H2", "categoria": "condimentos", "precio": 0 },
+  { "id": 16, "nombre": "Canela en Rama (sticks)", "categoria": "condimentos", "precio": 6500 },
+  { "id": 17, "nombre": "Canela Molida Premium", "categoria": "condimentos", "precio": 4500 },
+  { "id": 18, "nombre": "Cebolla en escamas", "categoria": "condimentos", "precio": 1700 },
+  { "id": 19, "nombre": "Cebolla en Polvo", "categoria": "condimentos", "precio": 1500 },
+  { "id": 20, "nombre": "Chimichurri Premium", "categoria": "condimentos", "precio": 1700 },
+  { "id": 21, "nombre": "Chimichurri Extra", "categoria": "condimentos", "precio": 0 },
+  { "id": 22, "nombre": "Clavo de olor entero", "categoria": "condimentos", "precio": 4800 },
+  { "id": 23, "nombre": "Coco Rallado (Hight Fat - mas grasa)", "categoria": "condimentos", "precio": 2500 },
+  { "id": 24, "nombre": "Comino Grano Siria", "categoria": "condimentos", "precio": 2300 },
+  { "id": 25, "nombre": "Comino Molido Siria", "categoria": "condimentos", "precio": 2300 },
+  { "id": 26, "nombre": "Condimento p/arroz", "categoria": "condimentos", "precio": 1100 },
+  { "id": 27, "nombre": "Condimento p/carne", "categoria": "condimentos", "precio": 1100 },
+  { "id": 28, "nombre": "Condimento p/empanadas", "categoria": "condimentos", "precio": 0 },
+  { "id": 29, "nombre": "Condimento para Pizza Premium", "categoria": "condimentos", "precio": 1500 },
+  { "id": 30, "nombre": "Curcuma Molida Premium INDIA", "categoria": "condimentos", "precio": 1800 },
+  { "id": 31, "nombre": "Curry INDIA", "categoria": "condimentos", "precio": 1800 },
+  { "id": 32, "nombre": "Especias surtidas", "categoria": "condimentos", "precio": 1200 },
+  { "id": 33, "nombre": "Espinaca en Polvo Importada", "categoria": "condimentos", "precio": 2200 },
+  { "id": 34, "nombre": "Gelatina s/ sabor 180 Bloom", "categoria": "condimentos", "precio": 3200 },
+  { "id": 35, "nombre": "Hibiscus (Flor de Jamaica)", "categoria": "condimentos", "precio": 3400 },
+  { "id": 36, "nombre": "Hongos Bolletus (de pino) chilenos", "categoria": "condimentos", "precio": 2600 },
+  { "id": 37, "nombre": "Jengibre Molido", "categoria": "condimentos", "precio": 2700 },
+  { "id": 38, "nombre": "Laurel en hojas Nacional", "categoria": "condimentos", "precio": 2500 },
+  { "id": 39, "nombre": "Manzanilla", "categoria": "condimentos", "precio": 6000 },
+  { "id": 40, "nombre": "Morron en polvo", "categoria": "condimentos", "precio": 2800 },
+  { "id": 41, "nombre": "Mostaza Grano", "categoria": "condimentos", "precio": 1600 },
+  { "id": 42, "nombre": "Mostaza Molida", "categoria": "condimentos", "precio": 1600 },
+  { "id": 43, "nombre": "Nuez moscada Grano Mediana (60/65)", "categoria": "condimentos", "precio": 8000 },
+  { "id": 44, "nombre": "Nuez moscada molida Premium", "categoria": "condimentos", "precio": 3600 },
+  { "id": 45, "nombre": "Oregano Premium 10 k Bolsa", "categoria": "condimentos", "precio": 1500 },
+  { "id": 46, "nombre": "Oregano molido", "categoria": "condimentos", "precio": 1000 },
+  { "id": 47, "nombre": "Paprika (pimenton picante)", "categoria": "condimentos", "precio": 1500 },
+  { "id": 48, "nombre": "Perejil Nacional-Premium", "categoria": "condimentos", "precio": 1800 },
+  { "id": 49, "nombre": "Pesto (Albahaca y Ajo)", "categoria": "condimentos", "precio": 1500 },
+  { "id": 50, "nombre": "Pimenton Esencia Exportacion", "categoria": "condimentos", "precio": 1600 },
+  { "id": 51, "nombre": "Pimenton Esencia Ahumado Exportacion", "categoria": "condimentos", "precio": 1600 },
+  { "id": 52, "nombre": "Pimienta Blanca en Grano", "categoria": "condimentos", "precio": 6500 },
+  { "id": 53, "nombre": "Pimienta Blanca Molida Okajima", "categoria": "condimentos", "precio": 6500 },
+  { "id": 54, "nombre": "Pimienta Blanca Mol. Seleccion", "categoria": "condimentos", "precio": 4000 },
+  { "id": 55, "nombre": "Pimienta Blanca Molida Brasil", "categoria": "condimentos", "precio": 3000 },
+  { "id": 56, "nombre": "Pimienta Negra en Grano", "categoria": "condimentos", "precio": 4000 },
+  { "id": 57, "nombre": "Pimienta Negra Molida Okajima", "categoria": "condimentos", "precio": 4000 },
+  { "id": 58, "nombre": "Pimientas mix (5 variedades)", "categoria": "condimentos", "precio": 7000 },
+  { "id": 59, "nombre": "Polvo p/ hornear", "categoria": "condimentos", "precio": 1200 },
+  { "id": 60, "nombre": "Provenzal P1 c/ Ajo Nacional", "categoria": "condimentos", "precio": 1700 },
+  { "id": 61, "nombre": "Puerro molido", "categoria": "condimentos", "precio": 3400 },
+  {
+    "id": 62,
+    "nombre": "Remolacha en Polvo",
+    "categoria": "condimentos",
+    "precio": 2000
+  },
+  {
+    "id": 63,
+    "nombre": "Salvia",
+    "categoria": "condimentos",
+    "precio": 1700
+  },
+  {
+    "id": 64,
+    "nombre": "Sopa juliana",
+    "categoria": "condimentos",
+    "precio": 2400
+  },
+  {
+    "id": 65,
+    "nombre": "Tomate en Polvo",
+    "categoria": "condimentos",
+    "precio": 4000
+  },
+  {
+    "id": 66,
+    "nombre": "Tomillo Cultivado Nacional",
+    "categoria": "condimentos",
+    "precio": 1500
+  },
+  {
+    "id": 67,
+    "nombre": "Zanahoria en Polvo",
+    "categoria": "condimentos",
+    "precio": 1900
+  },
+  {
+    "id": 68,
+    "nombre": "Zapallo Polvo",
+    "categoria": "condimentos",
+    "precio": 2000
+  }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     let cart = [];
-
+    const container = document.getElementById('product-container') || document.querySelector('.catalog-grid') || document.body; 
     const cartBarBtn = document.getElementById('cart-bar-btn');
     const cartDrawer = document.getElementById('cart-drawer');
     const drawerOverlay = document.getElementById('drawer-overlay');
     const closeDrawerBtn = document.getElementById('close-drawer');
-    
     const cartCountEl = document.getElementById('cart-count');
     const cartTotalEl = document.getElementById('cart-total');
     const drawerTotalEl = document.getElementById('drawer-total');
     const drawerItemsEl = document.getElementById('drawer-items');
     const btnWhatsapp = document.getElementById('btn-whatsapp');
-    const cards = document.querySelectorAll('.card');
+    const buscador = document.getElementById('buscador');
+
+    // Función para renderizar el catálogo dinámicamente
+    function renderCatalog(items) {
+        // Buscamos si hay un contenedor específico en el HTML, sino creamos uno o usamos el main
+        let grid = document.getElementById('product-grid');
+        if (!grid) {
+            grid = document.createElement('div');
+            grid.id = 'product-grid';
+            grid.className = 'grid-container';
+            // Lo insertamos antes del footer o al principio si no hay estructura previa
+            document.body.appendChild(grid);
+        }
+        
+        grid.innerHTML = '';
+
+        items.forEach(prod => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-base-price', prod.precio);
+            card.innerHTML = `
+                <div class="card-content">
+                    <span class="category">${prod.categoria}</span>
+                    <h2>${prod.nombre}</h2>
+                    <p class="product-price">$ ${prod.precio.toLocaleString('es-AR')}</p>
+                    <select class="weight-select">
+                        <option value="100">100 gr</option>
+                        <option value="250">250 gr</option>
+                        <option value="500">500 gr</option>
+                        <option value="1000" selected>1 kg</option>
+                    </select>
+                    <button class="btn-add">Agregar al carrito</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        initCardEvents();
+    }
 
     // Funciones para abrir y cerrar el cajón del carrito
     function toggleCart() {
         cartDrawer.classList.toggle('open');
         drawerOverlay.classList.toggle('open');
     }
+    
+    if(cartBarBtn) cartBarBtn.addEventListener('click', toggleCart);
+    if(closeDrawerBtn) closeDrawerBtn.addEventListener('click', toggleCart);
+    if(drawerOverlay) drawerOverlay.addEventListener('click', toggleCart);
 
-    cartBarBtn.addEventListener('click', toggleCart);
-    closeDrawerBtn.addEventListener('click', toggleCart);
-    drawerOverlay.addEventListener('click', toggleCart);
-
-    cards.forEach(card => {
-        const select = card.querySelector('.weight-select');
-        const priceEl = card.querySelector('.product-price');
-        const btnAdd = card.querySelector('.btn-add');
-        const productName = card.querySelector('h2').textContent;
-        const basePricePerKg = parseFloat(card.getAttribute('data-base-price'));
-
-        function updatePrice() {
-            const weight = parseInt(select.value);
-            let calculatedPrice = weight === 1000 ? basePricePerKg : (basePricePerKg * weight) / 1000;
-            priceEl.textContent = `$${calculatedPrice.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
-        }
-
-        select.addEventListener('change', updatePrice);
-        updatePrice();
-
-        btnAdd.addEventListener('click', () => {
-            const weightValue = parseInt(select.value);
-            const weightText = select.options[select.selectedIndex].text;
-            let itemPrice = weightValue === 1000 ? basePricePerKg : (basePricePerKg * weightValue) / 1000;
-
-            // Agregar producto al array del carrito (con un ID único basado en tiempo)
-            cart.push({
-                id: Date.now() + Math.random(),
-                name: productName,
-                weight: weightText,
-                price: itemPrice
-            });
-
-            updateCartUI();
-
-            btnAdd.textContent = '¡Agregado!';
-            btnAdd.style.backgroundColor = '#15803d';
-            setTimeout(() => {
-                btnAdd.textContent = 'Agregar';
-                btnAdd.style.backgroundColor = '#16a34a';
-            }, 1000);
-        });
-    });
-
-    // Función para actualizar la visualización del carrito
     function updateCartUI() {
         let totalCount = cart.length;
         let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
-
-        cartCountEl.textContent = `${totalCount} ${totalCount === 1 ? 'producto' : 'productos'}`;
-        cartTotalEl.textContent = `$${totalPrice.toLocaleString('es-AR')}`;
-        drawerTotalEl.textContent = `$${totalPrice.toLocaleString('es-AR')}`;
-
+        
+        if(cartCountEl) cartCountEl.textContent = `${totalCount} ${totalCount === 1 ? 'producto' : 'productos'}`;
+        if(cartTotalEl) cartTotalEl.textContent = `$ ${totalPrice.toLocaleString('es-AR')}`;
+        if(drawerTotalEl) drawerTotalEl.textContent = `$ ${totalPrice.toLocaleString('es-AR')}`;
+        
         if (cart.length === 0) {
-            drawerItemsEl.innerHTML = `<p class="empty-cart-msg">El carrito está vacío</p>`;
+            if(drawerItemsEl) drawerItemsEl.innerHTML = `<p class="empty-cart-msg">El carrito está vacío</p>`;
             return;
         }
+        
+        if(drawerItemsEl) {
+            drawerItemsEl.innerHTML = '';
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item-card';
+                itemEl.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${item.weight} - $ ${item.price.toLocaleString('es-AR', {minimumFractionDigits: 0, maximumFractionDigits: 0})}</p>
+                    </div>
+                    <button class="btn-remove-item" data-id="${item.id}">🗑️</button>
+                `;
+                drawerItemsEl.appendChild(itemEl);
+            });
 
-        drawerItemsEl.innerHTML = '';
-        cart.forEach(item => {
-            const itemEl = document.createElement('div');
-            itemEl.className = 'cart-item-card';
-            itemEl.innerHTML = `
-                <div class="cart-item-info">
-                    <h4>${item.name}</h4>
-                    <p>${item.weight} - $${item.price.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</p>
-                </div>
-                <button class="btn-remove-item" data-id="${item.id}">🗑️</button>
-            `;
-            drawerItemsEl.appendChild(itemEl);
-        });
+            drawerItemsEl.querySelectorAll('.btn-remove-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const itemId = parseFloat(e.currentTarget.getAttribute('data-id'));
+                    cart = cart.filter(item => item.id !== itemId);
+                    updateCartUI();
+                });
+            });
+        }
+    }
 
-        // Eventos para eliminar ítems individuales
-        const removeButtons = drawerItemsEl.querySelectorAll('.btn-remove-item');
-        removeButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const itemId = parseFloat(e.currentTarget.getAttribute('data-id'));
-                cart = cart.filter(item => item.id !== itemId);
+    // Inicializar eventos de las tarjetas generadas
+    function initCardEvents() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const select = card.querySelector('.weight-select');
+            const priceEl = card.querySelector('.product-price');
+            const btnAdd = card.querySelector('.btn-add');
+            const productName = card.querySelector('h2').textContent;
+            const basePricePerKg = parseFloat(card.getAttribute('data-base-price'));
+
+            function updatePrice() {
+                const weight = parseInt(select.value);
+                let calculatedPrice = weight === 1000 ? basePricePerKg : (basePricePerKg * weight) / 1000;
+                priceEl.textContent = `$ ${Math.round(calculatedPrice).toLocaleString('es-AR')}`;
+            }
+
+            select.addEventListener('change', updatePrice);
+            updatePrice();
+
+            btnAdd.addEventListener('click', () => {
+                const weightValue = parseInt(select.value);
+                const weightText = select.options[select.selectedIndex].text;
+                let itemPrice = weightValue === 1000 ? basePricePerKg : (basePricePerKg * weightValue) / 1000;
+                
+                cart.push({
+                    id: Date.now() + Math.random(),
+                    name: productName,
+                    weight: weightText,
+                    price: itemPrice
+                });
+                
                 updateCartUI();
+                toggleCart();
             });
         });
     }
 
-    // Botón de WhatsApp para enviar el pedido
-    btnWhatsapp.addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert('El carrito está vacío');
-            return;
-        }
-
-        let message = "Hola! Quiero hacer el siguiente pedido en SoAr Tienda Natural:\n\n";
-        cart.forEach(item => {
-            message += `- ${item.name} (${item.weight}): $${item.price.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}\n`;
-        });
-        
-        let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
-        message += `\n*Total a pagar: $${totalPrice.toLocaleString('es-AR')}*`;
-
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
-    });
-
-    // Buscador
-    const buscador = document.getElementById('buscador');
-    buscador.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        cards.forEach(card => {
-            const title = card.querySelector('h2').textContent.toLowerCase();
-            const category = card.querySelector('.category').textContent.toLowerCase();
-            if (title.includes(term) || category.includes(term)) {
-                card.style.display = 'flex';
-            } else {
-                card.style.display = 'none';
+    // Botón de WhatsApp
+    if(btnWhatsapp) {
+        btnWhatsapp.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('El carrito está vacío');
+                return;
             }
+            let message = "Hola! Quiero hacer el siguiente pedido en SoAr Tienda Natural:\n\n";
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.weight}): $ ${Math.round(item.price).toLocaleString('es-AR')}\n`;
+            });
+            let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+            message += `\n*Total a pagar: $ ${Math.round(totalPrice).toLocaleString('es-AR')}*`;
+            
+            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
         });
-    });
+    }
+
+    // Buscador interactivo
+    if(buscador) {
+        buscador.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = productos.filter(p => 
+                p.nombre.toLowerCase().includes(term) || p.categoria.toLowerCase().includes(term)
+            );
+            renderCatalog(filtered);
+        });
+    }
+
+    // Carga inicial del catálogo completo
+    renderCatalog(productos);
 });
