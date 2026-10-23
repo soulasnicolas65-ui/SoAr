@@ -171,21 +171,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const productName = card.querySelector('h2').textContent;
             const basePricePerKg = parseFloat(card.getAttribute('data-base-price'));
 
-            function updatePrice() {
+         function updatePrice() {
                 const weight = parseInt(select.value);
-                let calculatedPrice = weight === 1000 ? basePricePerKg : (basePricePerKg * weight) / 1000;
+                // Si el peso es 1000 (1kg), multiplica el precio de 100g por 10. Sino, calcula proporcional.
+                let calculatedPrice = weight === 1000 ? basePricePerKg * 10 : (basePricePerKg * weight) / 100;
                 priceEl.textContent = `$ ${Math.round(calculatedPrice).toLocaleString('es-AR')}`;
             }
 
             select.addEventListener('change', updatePrice);
-            // Forzar que por defecto tome 100g al iniciar la tarjeta
+            
+            // Forzar que por defecto al cargar muestre el precio de 100g
             select.value = "100";
             updatePrice();
 
             btnAdd.addEventListener('click', () => {
                 const weightValue = parseInt(select.value);
                 const weightText = select.options[select.selectedIndex].text;
-                let itemPrice = weightValue === 1000 ? basePricePerKg : (basePricePerKg * weightValue) / 1000;
+                let itemPrice = weightValue === 1000 ? basePricePerKg * 10 : (basePricePerKg * weightValue) / 100;
                 
                 cart.push({
                     id: Date.now() + Math.random(),
@@ -193,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     weight: weightText,
                     price: itemPrice
                 });
+                
+                updateCartUI();
+                toggleCart();
+            });
                 
                 updateCartUI();
                 toggleCart();
