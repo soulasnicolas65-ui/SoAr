@@ -1,4 +1,27 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Evita que la imagen se salga de los bordes */
+}
 
+.card-image {
+  width: 100%;
+  height: 160px; /* Ajusta la altura a tu gusto */
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la foto llene el espacio sin deformarse */
+}
+
+.card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 * {
     margin: 0;
     padding: 0;
