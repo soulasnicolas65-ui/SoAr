@@ -238,17 +238,19 @@ body {
   margin: 0 auto;
 }
 .search-box {
-  position: fixed;
-  top: 60px; /* Posición para computadoras */
-  left: 0;
-  width: 100%;
+  position: sticky;
+  top: 65px; /* Altura exacta de tu barra superior fija del carrito */
   background-color: #ffffff;
   padding: 12px 20px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   z-index: 800;
-  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
+/* Limpiamos cualquier margen forzado anterior de la grilla */
+.product-grid {
+  margin-top: 0;
+}
 /* Ajuste específico para celulares */
 @media (max-width: 768px) {
   .search-box {
