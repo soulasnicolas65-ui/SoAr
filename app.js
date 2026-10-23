@@ -93,10 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'card';
             card.setAttribute('data-base-price', prod.precio);
             
-            card.innerHTML = `
+           card.innerHTML = `
                 <div class="card-image">
                     <img src="${prod.imagen || 'img/default.jpg'}" alt="${prod.nombre}" style="width: 100%; height: 180px; object-fit: cover;">
-                    <span class="category">${prod.categoria}</span>
                 </div>
                 <div class="card-content">
                     <h2>${prod.nombre}</h2>
