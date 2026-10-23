@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2>${prod.nombre}</h2>
                     <p class="product-price">$ ${prod.precio.toLocaleString('es-AR')}</p>
                     <select class="weight-select">
-                        <option value="100">100 gr</option>
+                        <option value="100" selected>100 gr</option>
                         <option value="250">250 gr</option>
                         <option value="500">500 gr</option>
-                        <option value="1000" selected>1 kg</option>
+                        <option value="1000" >1 kg</option>
                     </select>
                     <button class="btn-add">Agregar al carrito</button>
                 </div>
