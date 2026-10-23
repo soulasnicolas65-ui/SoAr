@@ -240,7 +240,7 @@ body {
 
 .search-box {
   position: sticky;
-  top: 65px; /* Queda clavada justo debajo de la barra negra del carrito */
+  top: 50px; /* Queda clavada justo debajo de la barra negra del carrito */
   background-color: #f8fafc; /* Color de fondo para que tape los productos al pasar por debajo */
   padding-top: 15px;
   padding-bottom: 15px;
