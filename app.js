@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Estructura completa con imagen/icono y clases originales de la tarjeta
             card.innerHTML = `
                <div class="card-image">
-        <img src="${prod.imagen || 'imagen/default.jpg'}" alt="${prod.nombre}" style="width: 100%; height: 180px; object-fit: cover;">
+        <img src="${prod.imagen || 'img/default.jpg'}" alt="${prod.nombre}" style="width: 100%; height: 180px; object-fit: cover;">
         <span class="category">${prod.categoria}</span>
       </div>
                 <div class="card-content">
