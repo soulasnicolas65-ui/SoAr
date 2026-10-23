@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,47 +9,53 @@
 </head>
 <body>
 
-    <!-- Carrito fijo superior -->
-    <div class="cart-bar" id="cart-bar-btn">
-        <div class="cart-info">
-            <span class="cart-icon">🛒</span>
-            <span id="cart-count">0 productos</span>
-        </div>
-        <div class="cart-total-container">
-            <span>Total:</span>
-            <span id="cart-total">$0</span>
-        </div>
+  <!-- Carrito fijo superior -->
+  <div class="cart-bar" id="cart-bar-btn">
+    <div class="cart-info">
+      <span class="cart-icon">🛒</span>
+      <span id="cart-count">0 productos</span>
     </div>
-
-    <!-- Panel lateral desplegable del carrito -->
-    <div class="cart-drawer" id="cart-drawer">
-        <div class="drawer-header">
-            <h3>Tu Carrito</h3>
-            <button class="close-drawer" id="close-drawer">&times;</button>
-        </div>
-        <div class="drawer-items" id="drawer-items">
-            <p class="empty-cart-msg">El carrito está vacío</p>
-        </div>
-        <div class="drawer-footer">
-            <div class="drawer-total-row">
-                <span>Total a pagar:</span>
-                <span id="drawer-total">$0</span>
-            </div>
-            <button class="btn-whatsapp" id="btn-whatsapp">Enviar pedido por WhatsApp 📱</button>
-        </div>
+    <div class="cart-total-container">
+      <span>Total:</span>
+      <span id="cart-total">$0</span>
     </div>
-    <div class="drawer-overlay" id="drawer-overlay"></div>
+  </div>
 
-    <header class="header">
-        <h1>SoAr</h1>
-        <p>TIENDA NATURAL</p>
-    </header>
-
-<!-- Barra de búsqueda -->
-      <div class="search-box">
-        <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
+  <!-- Panel lateral desplegable del carrito -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3>Tu Carrito</h3>
+      <button class="close-drawer" id="close-drawer">&times;</button>
+    </div>
+    <div class="drawer-items" id="drawer-items">
+      <p class="empty-cart-msg">El carrito está vacío</p>
+    </div>
+    <div class="drawer-footer">
+      <div class="drawer-total-row">
+        <span>Total a pagar:</span>
+        <span id="drawer-total">$0</span>
       </div>
+      <button class="btn-whatsapp" id="btn-whatsapp">Enviar pedido por WhatsApp 📱</button>
+    </div>
+  </div>
+  <div class="drawer-overlay" id="drawer-overlay"></div>
 
-    <script src="app.js"></script>
+  <header class="header">
+    <h1>SoAr</h1>
+    <p>TIENDA NATURAL</p>
+  </header>
+
+  <!-- Contenedor principal de la tienda -->
+  <main class="container">
+    <!-- Barra de búsqueda -->
+    <div class="search-box">
+      <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
+    </div>
+
+    <!-- Grilla donde se cargan los productos -->
+    <div class="product-grid" id="grid-productos"></div>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
