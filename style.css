@@ -237,10 +237,9 @@ body {
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .search-box {
   position: fixed;
-  top: 60px; /* Altura exacta debajo de tu barra de carrito superior */
+  top: 60px; /* Posición para computadoras */
   left: 0;
   width: 100%;
   background-color: #ffffff;
@@ -248,6 +247,20 @@ body {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   z-index: 800;
   box-sizing: border-box;
+}
+
+/* Ajuste específico para celulares */
+@media (max-width: 768px) {
+  .search-box {
+    position: sticky; /* En celular se desplaza de forma natural con la página sin flotar fijo */
+    top: 0;
+    margin-top: 10px; /* Deja aire debajo del logo y la cabecera */
+    box-shadow: none;
+  }
+  
+  .product-grid {
+    margin-top: 20px; /* Elimina el margen forzado de la PC en celulares */
+  }
 }
 
 .search-box input {
