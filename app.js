@@ -1,6 +1,7 @@
+
 const productos = [
-  { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 2000,"imagen": "img/aji_cayena.jpg" },
-  { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 1600,"imagen": "img/aji_molido.jpg" },
+  { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 2000, "imagen": "img/aji_cayena.jpg" },
+  { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 1600, "imagen": "img/aji_molido.jpg" },
   { "id": 3, "nombre": "Aji Molido Extra", "categoria": "condimentos", "precio": 1400 },
   { "id": 4, "nombre": "Ajo Granulado Nacional", "categoria": "condimentos", "precio": 2000 },
   { "id": 5, "nombre": "Ajo Polvo Chino", "categoria": "condimentos", "precio": 1500 },
@@ -85,19 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCatalog(items) {
         let grid = document.getElementById('grid-productos');
         if (!grid) return;
-        
         grid.innerHTML = '';
 
         items.forEach(prod => {
             const card = document.createElement('div');
             card.className = 'card';
             card.setAttribute('data-base-price', prod.precio);
-            // Estructura completa con imagen/icono y clases originales de la tarjeta
+            
             card.innerHTML = `
-               <div class="card-image">
-        <img src="${prod.imagen || 'img/default.jpg'}" alt="${prod.nombre}" style="width: 100%; height: 180px; object-fit: cover;">
-        <span class="category">${prod.categoria}</span>
-      </div>
+                <div class="card-image">
+                    <img src="${prod.imagen || 'img/default.jpg'}" alt="${prod.nombre}" style="width: 100%; height: 180px; object-fit: cover;">
+                    <span class="category">${prod.categoria}</span>
+                </div>
                 <div class="card-content">
                     <h2>${prod.nombre}</h2>
                     <p class="product-price">$ ${prod.precio.toLocaleString('es-AR')}</p>
