@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             select.addEventListener('change', updatePrice);
+            // Forzar que por defecto tome 100g al iniciar la tarjeta
+            select.value = "100";
             updatePrice();
 
             btnAdd.addEventListener('click', () => {
