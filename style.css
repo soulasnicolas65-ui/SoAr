@@ -255,8 +255,8 @@ body {
 @media (max-width: 768px) {
   .search-box {
     position: sticky; /* En celular se desplaza de forma natural con la página sin flotar fijo */
-    top: 0;
-    margin-top: 10px; /* Deja aire debajo del logo y la cabecera */
+    top: 55px;
+    margin-top: 15px; /* Deja aire debajo del logo y la cabecera */
     box-shadow: none;
   }
   
