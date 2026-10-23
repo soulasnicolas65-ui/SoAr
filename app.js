@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 updateCartUI();
-                toggleCart();
+               
             });  
         });
     }
