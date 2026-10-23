@@ -44,22 +44,31 @@
         <p>TIENDA NATURAL</p>
     </header>
 
-    <main class="container">
-      <!-- Solapas estilo libro / enciclopedia -->
-      <div class="book-tabs">
-        <button class="book-tab active" data-category="todos">📖 Todo el Catálogo</button>
-        <button class="book-tab" data-category="condimentos">🌿 Condimentos</button>
-        <button class="book-tab" data-category="frutos-secos">🥜 Frutos Secos</button>
-        <button class="book-tab" data-category="semillas">🌾 Semillas y Cereales</button>
-      </div>
+  <main class="container">
+      
+      <!-- Contenedor general que divide la pantalla: solapas a la izquierda, productos a la derecha -->
+      <div class="shop-layout">
 
-      <!-- Barra de búsqueda -->
-      <div class="search-box">
-        <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
-      </div>
+        <!-- Solapas laterales estilo libro (Columna Izquierda) -->
+        <div class="book-tabs">
+          <button class="book-tab active" data-category="todos">📖 Todo</button>
+          <button class="book-tab" data-category="condimentos">🌿 Condimentos</button>
+          <button class="book-tab" data-category="frutos-secos">🥜 Frutos Secos</button>
+          <button class="book-tab" data-category="semillas">🌾 Semillas</button>
+        </div>
 
-        <!-- Grilla donde se cargarán todos los productos automáticamente -->
-        <div class="product-grid" id="grid-productos"></div>
+        <!-- Columna Derecha (Buscador + Grilla de Productos) -->
+        <div class="shop-content">
+          <!-- Barra de búsqueda -->
+          <div class="search-box">
+            <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
+          </div>
+
+          <!-- Grilla de productos -->
+          <div class="product-grid" id="grid-productos"></div>
+        </div>
+
+      </div>
     </main>
 
     <script src="app.js"></script>
