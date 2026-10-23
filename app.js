@@ -1,6 +1,6 @@
 const productos = [
-  { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 2000,"imagen": "imagen/aji_cayena.jpg" },
-  { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 1600,"imagen": "imagen/aji_molido.jpg" },
+  { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 2000,"imagen": "imag/aji_cayena.jpg" },
+  { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 1600,"imagen": "imag/aji_molido.jpg" },
   { "id": 3, "nombre": "Aji Molido Extra", "categoria": "condimentos", "precio": 1400 },
   { "id": 4, "nombre": "Ajo Granulado Nacional", "categoria": "condimentos", "precio": 2000 },
   { "id": 5, "nombre": "Ajo Polvo Chino", "categoria": "condimentos", "precio": 1500 },
