@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(closeDrawerBtn) closeDrawerBtn.addEventListener('click', toggleCart);
     if(drawerOverlay) drawerOverlay.addEventListener('click', toggleCart);
 
-    function updateCartUI() {
+   function updateCartUI() {
         let totalCount = cart.length;
         let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
         
