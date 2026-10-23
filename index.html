@@ -45,10 +45,18 @@
     </header>
 
     <main class="container">
-        <!-- Barra de búsqueda -->
-        <div class="search-box">
-            <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
-        </div>
+      <!-- Solapas estilo libro / enciclopedia -->
+      <div class="book-tabs">
+        <button class="book-tab active" data-category="todos">📖 Todo el Catálogo</button>
+        <button class="book-tab" data-category="condimentos">🌿 Condimentos</button>
+        <button class="book-tab" data-category="frutos-secos">🥜 Frutos Secos</button>
+        <button class="book-tab" data-category="semillas">🌾 Semillas y Cereales</button>
+      </div>
+
+      <!-- Barra de búsqueda -->
+      <div class="search-box">
+        <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
+      </div>
 
         <!-- Grilla donde se cargarán todos los productos automáticamente -->
         <div class="product-grid" id="grid-productos"></div>
