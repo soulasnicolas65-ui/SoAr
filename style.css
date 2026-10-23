@@ -258,6 +258,7 @@ body {
     top: 60px;
     margin-top: 10px; /* Deja aire debajo del logo y la cabecera */
    z-index: 500;
+    box-shadow: none;
   }
   }
   .product-grid {
