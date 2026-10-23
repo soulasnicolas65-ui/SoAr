@@ -239,13 +239,15 @@ body {
 }
 
 .search-box {
-  position: sticky;
-  top: 50px; /* Queda clavada justo debajo de la barra negra del carrito */
-  background-color: #f8fafc; /* Color de fondo para que tape los productos al pasar por debajo */
-  padding-top: 15px;
-  padding-bottom: 15px;
-  z-index: 900;
-  margin-bottom: 25px;
+  position: fixed;
+  top: 60px; /* Altura exacta debajo de tu barra de carrito superior */
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 12px 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  z-index: 800;
+  box-sizing: border-box;
 }
 
 .search-box input {
