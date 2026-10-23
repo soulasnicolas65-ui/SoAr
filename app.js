@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
             message += `\n*Total a pagar: $ ${Math.round(totalPrice).toLocaleString('es-AR')}*`;
             
-            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://wa.me/5492324685211?text=${encodeURIComponent(message)}`, '_blank');
         });
     }
 
