@@ -202,7 +202,7 @@ body {
     background-color: #20ba5a;
 }
 
-/* Resto de estilos del diseño anterior */
+/* Encabezado */
 .header {
     text-align: center;
     margin-bottom: 40px;
@@ -210,7 +210,6 @@ body {
     padding-bottom: 15px;
 }
 
-/* Línea separadora elegante */
 .header::after {
     content: "";
     display: block;
@@ -219,23 +218,119 @@ body {
     background-color: #4d6148;
     margin: 12px auto 0 auto;
 }
-.header h1 { font-size: 2.5rem; letter-spacing: 4px; color: #4d6148; font-weight: 800; }
-.header p { font-size: 0.85rem; color: #64748b; letter-spacing: 6px; margin-top: 6px; font-weight: 600; }
-.container { max-width: 1100px; margin: 0 auto; }
-.search-box { margin-bottom: 35px; }
-.search-box input { width: 100%; padding: 16px 22px; font-size: 1rem; border: 1px solid #e2e8f0; border-radius: 16px; outline: none; background: #ffffff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-.card { background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; border: 1px solid #f1f5f9; }
-.card-img-container { position: relative; width: 100%; height: 200px; background-color: #f1f5f9; }
-.card img { width: 100%; height: 100%; object-fit: cover; }
-.category { position: absolute; top: 14px; left: 14px; background: rgba(255, 255, 255, 0.92); font-size: 0.65rem; font-weight: 800; color: #15803d; padding: 6px 12px; border-radius: 30px; }
-.card-content { padding: 22px; display: flex; flex-direction: column; gap: 16px; flex-grow: 1; }
-.card h2 { font-size: 1.2rem; color: #0f172a; font-weight: 700; }
-.weight-select { width: 100%; padding: 10px 14px; border-radius: 12px; border: 1px solid #cbd5e1; background-color: #f8fafc; font-size: 0.95ny; }
-.price-action { margin-top: auto; padding-top: 14px; border-top: 1px dashed #e2e8f0; display: flex; align-items: center; justify-content: space-between; }
-.price { font-size: 1.25rem; font-weight: 800; color: #15803d; }
-.btn-add { background-color: #16a34a; color: white; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; }
-/* Forzar verde oliva en el logo principal */
+
 .header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
     color: #4d6148 !important;
+    font-weight: 800;
+}
+
+.header p {
+    font-size: 0.85rem;
+    color: #64748b;
+    letter-spacing: 6px;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.search-box {
+    margin-bottom: 35px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 16px 22px;
+    font-size: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Grilla y Tarjetas */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f1f5f9;
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #f1f5f9;
+}
+
+.category {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(255, 255, 255, 0.92);
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #15803d;
+    padding: 6px 12px;
+    border-radius: 30px;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-grow: 1;
+}
+
+.card h2 {
+    font-size: 1.15rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #15803d;
+}
+
+.weight-select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    font-size: 0.95rem;
+}
+
+.btn-add {
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #15803d;
 }
