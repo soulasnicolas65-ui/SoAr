@@ -358,3 +358,48 @@ body {
 .btn-add:hover {
   background-color: #15803d;
 }
+/* Contenedor de las solapas estilo libro */
+.book-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 5px 2px 15px 2px;
+  margin-bottom: 5px;
+  scrollbar-width: none;
+}
+
+.book-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Diseño de cada solapa individual estilo pestaña de agenda */
+.book-tab {
+  background: linear-gradient(to bottom, #fdfbf7, #f4eee1);
+  border: 1px solid #dcd4c1;
+  border-bottom: 3px solid #c8bda5;
+  color: #5c5343;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 12px 12px 4px 4px; /* Simula la formita de pestaña */
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.book-tab:hover {
+  background: linear-gradient(to bottom, #ffffff, #faf6ed);
+  transform: translateY(-2px);
+  color: #2c271e;
+}
+
+/* Solapa activa (como la página abierta o seleccionada) */
+.book-tab.active {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: #cbd5e1;
+  border-bottom: 3px solid #0f172a; /* Destaca la pestaña seleccionada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
