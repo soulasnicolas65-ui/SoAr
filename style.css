@@ -239,28 +239,37 @@ body {
 }
 .search-box {
   position: sticky;
-  top: 65px; /* Altura exacta de tu barra superior fija del carrito */
+  top: 65px; /* Altura de la barra fija superior del carrito */
   background-color: #ffffff;
   padding: 12px 20px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border-radius: 16px; /* Devuelve los bordes redondeados a la barra */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); /* Sombra suave para darle profundidad */
+  border: 1px solid #f1f5f9; /* Borde sutil */
   z-index: 800;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
-/* Limpiamos cualquier margen forzado anterior de la grilla */
-.product-grid {
-  margin-top: 0;
+.search-box input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px; /* Redondea el input interno */
+  outline: none;
+  background: #f8fafc; /* Fondo suave para el campo de texto */
+  box-sizing: border-box;
 }
-/* Ajuste específico para celulares */
+
+/* Ajuste para celulares */
 @media (max-width: 768px) {
   .search-box {
-    position: sticky; /* En celular se desplaza de forma natural con la página sin flotar fijo */
+    position: sticky;
     top: 60px;
-    margin-top: 10px; /* Deja aire debajo del logo y la cabecera */
-   z-index: 500;
-    box-shadow: none;
+    margin-top: 10px;
+    border-radius: 12px;
   }
-  }
+}
   .product-grid {
     margin-top: 20px; /* Elimina el margen forzado de la PC en celulares */
   }
