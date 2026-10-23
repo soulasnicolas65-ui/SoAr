@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updatePrice() {
                 const weight = parseInt(select.value);
                 // Si el peso es 100 (100g), divide el precio del kilo por 10. Si es 1000, muestra el precio entero.
-                let calculatedPrice = weight === 100 ? basePricePerKg / 10 : (basePricePerKg * weight) / 1000;
+               let calculatedPrice = (basePricePerKg * weight) / 1000;
                 priceEl.textContent = `$ ${Math.round(calculatedPrice).toLocaleString('es-AR')}`;
             }
 
