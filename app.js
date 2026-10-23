@@ -171,23 +171,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const productName = card.querySelector('h2').textContent;
             const basePricePerKg = parseFloat(card.getAttribute('data-base-price'));
 
-         function updatePrice() {
+  function updatePrice() {
                 const weight = parseInt(select.value);
-                // Si el peso es 1000 (1kg), multiplica el precio de 100g por 10. Sino, calcula proporcional.
-                let calculatedPrice = weight === 1000 ? basePricePerKg * 10 : (basePricePerKg * weight) / 100;
+                // Si el peso es 100 (100g), divide el precio del kilo por 10. Si es 1000, muestra el precio entero.
+                let calculatedPrice = weight === 100 ? basePricePerKg / 10 : (basePricePerKg * weight) / 1000;
                 priceEl.textContent = `$ ${Math.round(calculatedPrice).toLocaleString('es-AR')}`;
             }
 
             select.addEventListener('change', updatePrice);
             
-            // Forzar que por defecto al cargar muestre el precio de 100g
+            // Forzar que por defecto al cargar muestre los 100g
             select.value = "100";
             updatePrice();
 
             btnAdd.addEventListener('click', () => {
                 const weightValue = parseInt(select.value);
                 const weightText = select.options[select.selectedIndex].text;
-                let itemPrice = weightValue === 1000 ? basePricePerKg * 10 : (basePricePerKg * weightValue) / 100;
+                let itemPrice = weightValue === 100 ? basePricePerKg / 10 : (basePricePerKg * weightValue) / 1000;
                 
                 cart.push({
                     id: Date.now() + Math.random(),
@@ -198,11 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 updateCartUI();
                 toggleCart();
-            });
-                
-                updateCartUI();
-                toggleCart();
-            });
+            });  
         });
     }
 
