@@ -1,293 +1,269 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    background-color: #f8fafc;
-    color: #1e293b;
-    padding-top: 100px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+  background-color: #f8fafc;
+  color: #1e293b;
+  padding-top: 100px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* Barra de Carrito Fija Superior */
 .cart-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(8px);
-    color: #ffffff;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .cart-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .cart-icon {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .cart-total-container {
-    display: flex;
-    gap: 10px;
-    font-size: 1.1rem;
-    font-weight: 700;
+  display: flex;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 #cart-total {
-    color: #4ade80;
+  color: #4ade80;
 }
 
 /* Panel Lateral Desplegable (Drawer) */
 .cart-drawer {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 100%;
-    max-width: 380px;
-    height: 100%;
-    background: #ffffff;
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    z-index: 1100;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease-in-out;
 }
 
 .cart-drawer.open {
-    right: 0;
+  right: 0;
 }
 
 .drawer-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
-    z-index: 1050;
-    display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1050;
+  display: none;
 }
 
 .drawer-overlay.open {
-    display: block;
+  display: block;
 }
 
 .drawer-header {
-    padding: 20px;
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .drawer-header h3 {
-    font-size: 1.2rem;
-    color: #0f172a;
+  font-size: 1.2rem;
+  color: #0f172a;
 }
 
 .close-drawer {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #64748b;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #64748b;
 }
 
 .drawer-items {
-    padding: 20px;
-    flex-grow: 1;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .empty-cart-msg {
-    text-align: center;
-    color: #94a3b8;
-    margin-top: 40px;
+  text-align: center;
+  color: #94a3b8;
+  margin-top: 40px;
 }
 
 .cart-item-card {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cart-item-info h4 {
-    font-size: 0.95rem;
-    color: #0f172a;
+  font-size: 0.95rem;
+  color: #0f172a;
 }
 
 .cart-item-info p {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-top: 2px;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 2px;
 }
 
 .btn-remove-item {
-    background: #fee2e2;
-    color: #dc2626;
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
 }
 
 .btn-remove-item:hover {
-    background: #fecaca;
+  background: #fecaca;
 }
 
 .drawer-footer {
-    padding: 20px;
-    border-top: 1px solid #e2e8f0;
-    background: #f8fafc;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .drawer-total-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #0f172a;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .btn-whatsapp {
-    background-color: #25d366;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    text-align: center;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-align: center;
 }
 
 .btn-whatsapp:hover {
-    background-color: #20ba5a;
+  background-color: #20ba5a;
 }
 
 /* Encabezado */
 .header {
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  padding-bottom: 15px;
 }
 
 .header::after {
-    content: "";
-    display: block;
-    width: 120px;
-    height: 2px;
-    background-color: #4d6148;
-    margin: 12px auto 0 auto;
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: #4d6148;
+  margin: 12px auto 0 auto;
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    letter-spacing: 4px;
-    color: #4d6148 !important;
-    font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  color: #4d6148 !important;
+  font-weight: 800;
 }
 
 .header p {
-    font-size: 0.85rem;
-    color: #64748b;
-    letter-spacing: 6px;
-    margin-top: 6px;
-    font-weight: 600;
+  font-size: 0.85rem;
+  color: #64748b;
+  letter-spacing: 6px;
+  margin-top: 6px;
+  font-weight: 600;
 }
 
 .container {
-    max-width: 1100px;
-    margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .search-box {
-    margin-bottom: 35px;
+  margin-bottom: 35px;
 }
 
 .search-box input {
-    width: 100%;
-    padding: 16px 22px;
-    font-size: 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    outline: none;
-    background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  width: 100%;
+  padding: 16px 22px;
+  font-size: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  outline: none;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 /* Grilla y Tarjetas */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-
-
-
-
-.category {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(255, 255, 255, 0.92);
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: #15803d;
-    padding: 6px 12px;
-    border-radius: 30px;
-}
-
-.card-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    flex-grow: 1;
-}
 .card {
   background: #ffffff;
-  border-radius: 20px; /* Aquí recuperas las esquinas redondeadas */
-  overflow: hidden;    /* Asegura que la imagen respete el redondeo de la tarjeta */
+  border-radius: 20px;
+  overflow: hidden;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
@@ -307,46 +283,59 @@ body {
   object-fit: cover;
 }
 
+.category {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #15803d;
+  padding: 6px 12px;
+  border-radius: 30px;
+}
+
 .card-content {
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  gap: 14px;
   flex-grow: 1;
 }
 
 .card h2 {
-    font-size: 1.15rem;
-    color: #0f172a;
-    font-weight: 700;
+  font-size: 1.15rem;
+  color: #0f172a;
+  font-weight: 700;
 }
 
 .product-price {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #15803d;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #15803d;
 }
 
 .weight-select {
-    width: 100%;
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: 1px solid #cbd5e1;
-    background-color: #f8fafc;
-    font-size: 0.95rem;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 0.95rem;
 }
 
 .btn-add {
-    background-color: #16a34a;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    transition: background 0.2s;
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
 }
 
 .btn-add:hover {
-    background-color: #15803d;
+  background-color: #15803d;
 }
