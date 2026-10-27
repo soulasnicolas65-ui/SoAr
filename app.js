@@ -6,7 +6,7 @@ const productos = [
   { "id": 4, "nombre": "Ajo Granulado Nacional", "categoria": "condimentos", "precio": 23000,  "imagen": "img/ajo-granulado.jpg"},
   { "id": 5, "nombre": "Ajo Polvo", "categoria": "condimentos", "precio": 20000 },
   { "id": 6, "nombre": "Albahaca deshidratada Nacional", "categoria": "condimentos", "precio": 17000 },
-  { "id": 7, "nombre": "Anis Estrellado Entero", "categoria": "condimentos", "precio": 56000 },
+  { "id": 7, "nombre": "Anis Estrellado Entero", "categoria": "condimentos", "precio": 56000, "imagen": "img/anis-estrellado.jpg" },
   { "id": 8, "nombre": "Anis grano", "categoria": "condimentos", "precio": 45000 },
   { "id": 9, "nombre": "Anis molido", "categoria": "condimentos", "precio": 30000 },
   { "id": 10, "nombre": "Apio Polvo", "categoria": "condimentos", "precio": 24000 },
