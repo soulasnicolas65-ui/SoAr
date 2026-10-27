@@ -125,43 +125,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if(drawerOverlay) drawerOverlay.addEventListener('click', toggleCart);
 
 function updateCartUI() {
-    let totalCount = cart.length;
-    let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+        let totalCount = cart.length;
+        let totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
 
-    if(cartCountEl) cartCountEl.textContent = `${totalCount} ${totalCount === 1 ? 'producto' : 'productos'}`;
-    if(cartTotalEl) cartTotalEl.textContent = `$ ${totalPrice.toLocaleString('es-AR')}`;
-    if(drawerTotalEl) drawerTotalEl.textContent = `$ ${totalPrice.toLocaleString('es-AR')}`;
+        if(cartCountEl) cartCountEl.textContent = `${totalCount} ${totalCount === 1 ? 'producto' : 'productos'}`;
+        if(cartTotalEl) cartTotalEl.textContent = `$ ${totalPrice.toLocaleString('es-AR')}`;
+        if(drawerTotalEl) drawerTotalEl.textContent = `$ ${totalPrice.toLocaleString('es-AR')}`;
 
-    if (cart.length === 0) {
-        if(drawerItemsEl) drawerItemsEl.innerHTML = `<p class="empty-cart-msg">El carrito está vacío</p>`;
-        return;
-    }
+        if (cart.length === 0) {
+            if(drawerItemsEl) drawerItemsEl.innerHTML = `<p class="empty-cart-msg">El carrito está vacío</p>`;
+            return;
+        }
 
-    if(drawerItemsEl) {
-        drawerItemsEl.innerHTML = '';
-        cart.forEach(item => {
-            const itemEl = document.createElement('div');
-            itemEl.className = 'cart-item-card';
-            itemEl.innerHTML = `
-                <div class="cart-item-info">
-                    <h4>${item.name}</h4>
-                    <p>${item.weight} - $ ${item.price.toLocaleString('es-AR', {minimumFractionDigits: 0, maximumFractionDigits: 0})}</p>
-                </div>
-                <button class="btn-remove-item" data-id="${item.id}">🗑️</button>
-            `;
-            drawerItemsEl.appendChild(itemEl);
-        });
-
-        drawerItemsEl.querySelectorAll('.btn-remove-item').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const itemId = parseFloat(e.currentTarget.getAttribute('data-id'));
-                cart = cart.filter(item => item.id !== itemId);
-                updateCartUI();
+        if(drawerItemsEl) {
+            drawerItemsEl.innerHTML = '';
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item-card';
+                itemEl.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${item.weight} - $ ${item.price.toLocaleString('es-AR', {minimumFractionDigits: 0, maximumFractionDigits: 0})}</p>
+                    </div>
+                    <button class="btn-remove-item" data-id="${item.id}">🗑️</button>
+                `;
+                drawerItemsEl.appendChild(itemEl);
             });
-        });
-    }
-}
 
+            drawerItemsEl.querySelectorAll('.btn-remove-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const itemId = parseFloat(e.currentTarget.getAttribute('data-id'));
+                    cart = cart.filter(item => item.id !== itemId);
+                    updateCartUI();
+                });
+            });
+        }
+    }
+  
     function initCardEvents() {
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
