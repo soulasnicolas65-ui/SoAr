@@ -157,7 +157,7 @@ function updateCartUI() {
                 cart = cart.filter(item => item.id !== itemId);
                 updateCartUI();
             });
-        });
+       
     }
 }
 
