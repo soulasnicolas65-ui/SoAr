@@ -249,5 +249,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Lógica de deslizamiento táctil (Swipe) para cambiar de categoría ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'varios'];
+
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        manejarSwipe();
+    }, false);
+
+    function manejarSwipe() {
+        const umbralSwipe = 50; 
+        if (touchEndX < touchStartX - umbralSwipe) {
+            cambiarCategoriaSiguiente(1);
+        }
+        if (touchEndX > touchStartX + umbralSwipe) {
+            cambiarCategoriaSiguiente(-1);
+        }
+    }
+
+    function cambiarCategoriaSiguiente(direccion) {
+        let indexActual = categoriasDisponibles.indexOf(categoriaActual);
+        if (indexActual === -1) indexActual = 0;
+        
+        let nuevoIndex = indexActual + direccion;
+        
+        if (nuevoIndex >= categoriasDisponibles.length) nuevoIndex = 0;
+        if (nuevoIndex < 0) nuevoIndex = categoriasDisponibles.length - 1;
+        
+        categoriaActual = categoriasDisponibles[nuevoIndex];
+        
+        tabChips.forEach(btn => {
+            if (btn.getAttribute('data-categoria') === categoriaActual) {
+                btn.classList.add('active');
+                btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        filtrarProductos();
+    }
+
     renderCatalog(productos);
 });
