@@ -241,7 +241,7 @@ body {
 /* Buscador Fijo Arriba */
 .sticky-search-container {
   position: sticky;
-  top: 50px; /* Quedará justo debajo de la barra negra del carrito */
+  top: 50px;
   background-color: #f8fafc;
   z-index: 800;
   padding: 10px 0;
@@ -289,11 +289,11 @@ body {
   overflow-x: auto;
   white-space: nowrap;
   padding: 0;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 .tabs-scroll-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .tabs-wrapper {
@@ -320,16 +320,28 @@ body {
 }
 
 .tab-chip.active {
-  background-color: #e8f5e9; /* Tono verde claro acorde a tu tienda natural */
-  color: #2c5e3b; /* Color de acento verde corporativo */
+  background-color: #e8f5e9;
+  color: #2c5e3b;
 }
 
-/* Grilla y Tarjetas de Productos */
+/* Grilla y Tarjetas de Productos con animación de deslizamiento lateral */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 25px;
   margin-top: 0;
+  animation: slideHoriz 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes slideHoriz {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .card {
@@ -385,6 +397,7 @@ body {
   font-size: 0.95rem;
 }
 
+/* Botón agregar al carrito en verde oliva */
 .btn-add {
   background-color: #4d6148;
   color: white;
@@ -398,25 +411,5 @@ body {
 }
 
 .btn-add:hover {
-  background-color: #15803d;
-}
-
-/* Transición suave para el catálogo al cambiar de categoría */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 0;
-  animation: fadeInSlide 0.35s ease-in-out;
-}
-
-@keyframes fadeInSlide {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background-color: #3b4c37;
 }
