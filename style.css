@@ -400,3 +400,23 @@ body {
 .btn-add:hover {
   background-color: #15803d;
 }
+
+/* Transición suave para el catálogo al cambiar de categoría */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 0;
+  animation: fadeInSlide 0.35s ease-in-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
