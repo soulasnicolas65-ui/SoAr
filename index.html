@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -55,16 +54,30 @@
     <p>TIENDA NATURAL</p>
   </header>
 
-  <!-- Contenedor principal de la tienda -->
-  <main class="container">
-    <!-- Barra de búsqueda -->
+  <!-- BUSCADOR FIJO ARRIBA -->
+  <div class="sticky-search-container">
     <div class="search-box">
       <input type="text" id="buscador" placeholder="🔍 Buscar productos o categorías...">
     </div>
+  </div>
 
+  <!-- Contenedor principal de la tienda -->
+  <main class="container">
     <!-- Grilla donde se cargan los productos -->
     <div class="product-grid" id="grid-productos"></div>
   </main>
+
+  <!-- SOLAPAS DESLIZANTES FIJAS ABAJO AL PIE -->
+  <footer class="fixed-footer-tabs">
+    <div class="tabs-scroll-container">
+     <div class="tabs-wrapper">
+  <button class="tab-chip active" data-categoria="todos">Todos</button>
+  <button class="tab-chip" data-categoria="condimentos">Condimentos</button>
+  <button class="tab-chip" data-categoria="frutos secos">Frutos Secos</button>
+  <button class="tab-chip" data-categoria="varios">Otros</button>
+</div>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
