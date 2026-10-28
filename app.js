@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Lógica de deslizamiento táctil (Swipe) para cambiar de categoría ---
+    // --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
     let touchStartX = 0;
     let touchEndX = 0;
     const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'varios'];
@@ -284,16 +284,30 @@ document.addEventListener('DOMContentLoaded', () => {
         
         categoriaActual = categoriasDisponibles[nuevoIndex];
         
-        tabChips.forEach(btn => {
-            if (btn.getAttribute('data-categoria') === categoriaActual) {
-                btn.classList.add('active');
-                btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            } else {
-                btn.classList.remove('active');
+        const grid = document.getElementById('grid-productos');
+        if (grid) {
+            grid.style.opacity = '0';
+            grid.style.transform = 'translateY(10px)';
+            grid.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        }
+
+        setTimeout(() => {
+            tabChips.forEach(btn => {
+                if (btn.getAttribute('data-categoria') === categoriaActual) {
+                    btn.classList.add('active');
+                    btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            filtrarProductos();
+
+            if (grid) {
+                grid.style.opacity = '1';
+                grid.style.transform = 'translateY(0)';
             }
-        });
-        
-        filtrarProductos();
+        }, 150);
     }
 
     renderCatalog(productos);
