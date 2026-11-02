@@ -13,20 +13,17 @@ const productos = [
   { "id": 12, "nombre": "Azucar Impalpable", "categoria": "condimentos", "precio": 5000, "imagen": "img/azucar-impalpable.jpg" },
   { "id": 13, "nombre": "Bicarbonato de Sodio", "categoria": "condimentos", "precio": 10000, "imagen": "img/bicarbonato.jpg" },
   { "id": 14, "nombre": "Butter de milanesa", "categoria": "condimentos", "precio": 14000 },
-  
   { "id": 16, "nombre": "Canela en Rama (sticks)", "categoria": "condimentos", "precio": 65000, "imagen": "img/canela.jpg" },
   { "id": 17, "nombre": "Canela Molida Premium", "categoria": "condimentos", "precio": 45000, "imagen": "img/canela-molida.jpg" },
   { "id": 18, "nombre": "Cebolla en escamas", "categoria": "condimentos", "precio": 17000, "imagen": "img/cebolla-escamas.jpg" },
   { "id": 19, "nombre": "Cebolla en Polvo", "categoria": "condimentos", "precio": 15000, "imagen": "img/cebolla-polvo.jpg" },
   { "id": 20, "nombre": "Chimichurri Premium", "categoria": "condimentos", "precio": 17000, "imagen": "img/chimichurri.jpg" },
- 
   { "id": 22, "nombre": "Clavo de olor entero", "categoria": "condimentos", "precio": 78000, "imagen": "img/clavo.jpg" },
   { "id": 23, "nombre": "Coco Rallado (Hight Fat - mas grasa)", "categoria": "condimentos", "precio": 25000, "imagen": "img/coco-rayado.jpg"  },
   { "id": 24, "nombre": "Comino Grano Siria", "categoria": "condimentos", "precio": 23000, "imagen": "img/comino-grano.jpg" },
   { "id": 25, "nombre": "Comino Molido Siria", "categoria": "condimentos", "precio": 23000, "imagen": "img/comino-polvo.jpg" },
   { "id": 26, "nombre": "Condimento p/arroz", "categoria": "condimentos", "precio": 11000, "imagen": "img/condimentop.jpg" },
   { "id": 27, "nombre": "Condimento p/carne", "categoria": "condimentos", "precio": 11000,  "imagen": "img/condimentop.jpg" },
-
   { "id": 29, "nombre": "Condimento para Pizza Premium", "categoria": "condimentos", "precio": 18000 },
   { "id": 30, "nombre": "Curcuma Molida Premium INDIA", "categoria": "condimentos", "precio": 35000, "imagen": "img/curcuma.jpg" },
   { "id": 31, "nombre": "Curry INDIA", "categoria": "condimentos", "precio": 25000, "imagen": "img/curry.jpg" },
