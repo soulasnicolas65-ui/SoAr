@@ -419,61 +419,53 @@ tabChips.forEach(btn => {
     let touchEndX = 0;
   const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas', 'cereales', 'varios'];
 
-    document.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, false);
+document.addEventListener('DOMContentLoaded', () => {
+  renderCatalog();
+  setupEventListeners();
+});
 
-    document.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        manejarSwipe();
-    }, false);
+function renderCatalog(productosAMostrar = productos) {
+  const grid = document.getElementById('grid-productos');
+  if (!grid) return;
+  grid.innerHTML = '';
+  
+  if (productosAMostrar.length === 0) {
+    grid.innerHTML = '<p class="no-results">No se encontraron productos.</p>';
+    return;
+  }
 
-    function manejarSwipe() {
-        const umbralSwipe = 50; 
-        if (touchEndX < touchStartX - umbralSwipe) {
-            cambiarCategoriaSiguiente(1);
-        }
-        if (touchEndX > touchStartX + umbralSwipe) {
-            cambiarCategoriaSiguiente(-1);
-        }
-    }
+  productosAMostrar.forEach(producto => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <h3>${producto.nombre}</h3>
+      <p class="precio">$${producto.precio.toLocaleString()}</p>
+      <button onclick="agregarAlCarro(${producto.id})">Agregar</button>
+    `;
+    grid.appendChild(card);
+  });
+}
 
-    function cambiarCategoriaSiguiente(direccion) {
-        let indexActual = categoriasDisponibles.indexOf(categoriaActual);
-        if (indexActual === -1) indexActual = 0;
-        
-        let nuevoIndex = indexActual + direccion;
-        
-        if (nuevoIndex >= categoriasDisponibles.length) nuevoIndex = 0;
-        if (nuevoIndex < 0) nuevoIndex = categoriasDisponibles.length - 1;
-        
-        categoriaActual = categoriasDisponibles[nuevoIndex];
-        
-        const grid = document.getElementById('grid-productos');
-        if (grid) {
-            grid.style.opacity = '0';
-            grid.style.transform = 'translateY(10px)';
-            grid.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-        }
+function filtrarProductos() {
+  const input = document.getElementById('search-input');
+  const query = input ? input.value.toLowerCase() : '';
+  
+  let filtrados = productos.filter(p => {
+    const coincideTexto = p.nombre.toLowerCase().includes(query) || p.descripcion.toLowerCase().includes(query);
+    const coincideCategoria = categoriaActual === 'todos' || p.categoria === categoriaActual;
+    return coincideTexto && coincideCategoria;
+  });
 
-        setTimeout(() => {
-            tabChips.forEach(btn => {
-                if (btn.getAttribute('data-categoria') === categoriaActual) {
-                    btn.classList.add('active');
-                    btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            
-            filtrarProductos();
+  renderCatalog(filtrados);
+}
 
-            if (grid) {
-                grid.style.opacity = '1';
-                grid.style.transform = 'translateY(0)';
-            }
-        }, 150);
-    }
+function setupEventListeners() {
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', filtrarProductos);
+  }
+}
 
 // --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
 let touchStartX = 0;
