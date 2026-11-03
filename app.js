@@ -172,30 +172,30 @@ const productos = [
     pesoVariable: true },
     { "id": 98, "nombre": "Copos de Maiz", "categoria": "cereales", "precio": 8000, "imagen": "img/copos.jpg",
     pesoVariable: true },
-    { "id": 99, "nombre": "Aceite de Coco Neutro 360", "categoria": "varios", "precio": 850, "imagen": "img/aceite-coco.jpg",
+    { "id": 99, "nombre": "Aceite de Coco Neutro 360", "categoria": "varios", "precio": 8500, "imagen": "img/aceite-coco.jpg",
     pesoVariable: false },
-    { "id": 100, "nombre": "Galletita Boccone", "categoria": "varios", "precio": 200, "imagen": "img/galletita_boccone.jpg",
+    { "id": 100, "nombre": "Galletita Boccone", "categoria": "varios", "precio": 2000, "imagen": "img/galletita_boccone.jpg",
     pesoVariable: false },
-    { "id": 101, "nombre": "Falafel", "categoria": "varios", "precio": 280, "imagen": "img/falafel.jpg",
+    { "id": 101, "nombre": "Falafel", "categoria": "varios", "precio": 2800, "imagen": "img/falafel.jpg",
     pesoVariable: false  },
-    { "id": 102, "nombre": "Humus", "categoria": "varios", "precio": 250, "imagen": "img/humus.jpg",
+    { "id": 102, "nombre": "Humus", "categoria": "varios", "precio": 2500, "imagen": "img/humus.jpg",
     pesoVariable: false  },
-    { "id": 103, "nombre": "Hamburguesa", "categoria": "varios", "precio": 280, "imagen": "img/hamburguesa.jpg",
+    { "id": 103, "nombre": "Hamburguesa", "categoria": "varios", "precio": 2800, "imagen": "img/hamburguesa.jpg",
     pesoVariable: false  },
-    { "id": 104, "nombre": "Buñuelos de Espinaca", "categoria": "varios", "precio": 350, "imagen": "img/buñuelos_de_espinaca.jpg",
+    { "id": 104, "nombre": "Buñuelos de Espinaca", "categoria": "varios", "precio": 3500, "imagen": "img/buñuelos_de_espinaca.jpg",
     pesoVariable: false  },
-    { "id": 105, "nombre": "Sal Marina Fina", "categoria": "varios", "precio": 450, "imagen": "img/sal-marina.jpg",
+    { "id": 105, "nombre": "Sal Marina Fina", "categoria": "varios", "precio": 4500, "imagen": "img/sal-marina.jpg",
     pesoVariable: true },
-    { "id": 106, "nombre": "Pasta de mani", "categoria": "frutos secos", "precio": 320, "imagen": "img/pasta-mani.jpg", pesoVariable: false },
-    { "id": 107, "nombre": "Levadura", "categoria": "varios", "precio": 120, "imagen": "img/levadura.jpg",
+    { "id": 106, "nombre": "Pasta de mani", "categoria": "frutos secos", "precio": 3200, "imagen": "img/pasta-mani.jpg", pesoVariable: false },
+    { "id": 107, "nombre": "Levadura", "categoria": "varios", "precio": 1200, "imagen": "img/levadura.jpg",
     pesoVariable: false  },
-    { "id": 108, "nombre": "Queso Crema Light 190g", "categoria": "varios", "precio": 260, "imagen": "img/queso_crema_light_190g.jpg",
+    { "id": 108, "nombre": "Queso Crema Light 190g", "categoria": "varios", "precio": 2600, "imagen": "img/queso_crema_light_190g.jpg",
     pesoVariable: false  },
-    { "id": 109, "nombre": "Queso Crema 290g", "categoria": "varios", "precio": 320, "imagen": "img/queso_crema_290g.jpg",
+    { "id": 109, "nombre": "Queso Crema 290g", "categoria": "varios", "precio": 3200, "imagen": "img/queso_crema_290g.jpg",
     pesoVariable: false  },
-    { "id": 110, "nombre": "Queso Cremoso", "categoria": "varios", "precio": 1100, "imagen": "img/queso_cremoso.jpg",
+    { "id": 110, "nombre": "Queso Cremoso", "categoria": "varios", "precio": 11000, "imagen": "img/queso_cremoso.jpg",
     pesoVariable: false  },
-    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 230, "imagen": "img/yogurt_bebible_900g.jpg",
+    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt_bebible_900g.jpg",
     pesoVariable: false  }
 
 ];
@@ -262,15 +262,42 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCatalog(filtrados);
     }
 
-    // Manejo de clics en las solapas deslizantes (píldoras)
-    tabChips.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+// Manejo inteligente de solapas con filtro de movimiento diagonal
+tabChips.forEach(btn => {
+    let startX = 0;
+    let startY = 0;
+
+    btn.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    btn.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        
+        const diffX = Math.abs(endX - startX);
+        const diffY = Math.abs(endY - startY);
+
+        // Si el desplazamiento total (incluso en diagonal) fue mayor a 40px, 
+        // significa que el usuario estaba haciendo scroll y se descarta el cambio de categoría.
+        if (diffX < 40 && diffY < 40) {
             tabChips.forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            categoriaActual = e.currentTarget.getAttribute('data-categoria');
+            btn.classList.add('active');
+            categoriaActual = btn.getAttribute('data-categoria');
             filtrarProductos();
-        });
+        }
     });
+
+    // Mantenemos el evento click tradicional para computadoras
+    btn.addEventListener('click', (e) => {
+        if (!e.detail) return; // Evita doble disparo en algunos dispositivos táctiles
+        tabChips.forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        categoriaActual = e.currentTarget.getAttribute('data-categoria');
+        filtrarProductos();
+    });
+});
 
     if(buscador) {
         buscador.addEventListener('input', filtrarProductos);
