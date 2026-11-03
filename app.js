@@ -66,25 +66,21 @@ const productos = [
   { "id": 69, "nombre": "Zapallo Polvo", "categoria": "condimentos", "precio": 20000,  "imagen": "img/zapallo.jpg" },
 
   { "id": 71, "nombre": "Almendras Guara", "categoria": "frutos secos", "precio": 25000, "imagen": "img/almendra_guara.jpg" },
-    //{ "id": 72, "nombre": "Almendras partidas", "categoria": "frutos secos", "precio": 20000, "imagen": "img/almendras_partidas.jpg" },
-   // { "id": 73, "nombre": "Harina de Almendras (con piel)", "categoria": "frutos secos", "precio": 11000, "imagen": "img/harina_de_almendras_con_piel.jpg" },
-    //{ "id": 74, "nombre": "Harina de Almendras (con piel) 100% pura", "categoria": "frutos secos", "precio": 0, "imagen": "img/harina_de_almendras_con_piel_100_pura.jpg" },
+ 
     { "id": 75, "nombre": "Harina de Almendras (sin piel)", "categoria": "frutos secos", "precio": 20000, "imagen": "img/harina-almendra.jpg" },
-    { "id": 76, "nombre": "Maiz Frito", "categoria": "frutos secos", "precio": 27000, "imagen": "img/Maiz frito.jpg" },
+    { "id": 76, "nombre": "Maiz Frito", "categoria": "frutos secos", "precio": 27000, "imagen": "img/maiz-frito.jpg" },
     { "id": 77, "nombre": "Avellanas grandes", "categoria": "frutos secos", "precio": 25000, "imagen": "img/avellana.jpg" },
     { "id": 78, "nombre": "Castañas de Caju", "categoria": "frutos secos", "precio": 27000, "imagen": "img/castaña.jpg" },
-   // { "id": 79, "nombre": "Castañas de Caju W4", "categoria": "frutos secos", "precio": 23000, "imagen": "img/castañas_de_caju_w4.jpg" },
-   // { "id": 80, "nombre": "Nueces Chandler Extra Light Cuartos cosecha 2025", "categoria": "frutos secos", "precio": 26000, "imagen": "img/nueces_chandler_extra_light_cuartos_cosecha_2025.jpg" },
+  
     { "id": 81, "nombre": "Nueces Chandler Extra Light Mariposa", "categoria": "frutos secos", "precio": 27000, "imagen": "img/nuez.jpg" },
-   // { "id": 82, "nombre": "Nueces Chandler con cascara", "categoria": "frutos secos", "precio": 18000, "imagen": "img/nueces_chandler_con_cascara_3436.jpg" },
-    { "id": 83, "nombre": "Pistachos (con cascara salados)", "categoria": "frutos secos", "precio": 90000, "imagen": "img/Pistachos con Cascara.jpg" },
+  
+    { "id": 83, "nombre": "Pistachos (con cascara salados)", "categoria": "frutos secos", "precio": 90000, "imagen": "img/pistachos-cascara.jpg" },
     { "id": 84, "nombre": "Pistachos naturales pelados", "categoria": "frutos secos", "precio": 160000, "imagen": "img/pistacho-natural.jpg" },
     { "id": 85, "nombre": "Mani Crudo (para hacer garrapiñada)", "categoria": "frutos secos", "precio": 4500, "imagen": "img/mani_crudo.jpg" },
     { "id": 86, "nombre": "Mani Repelado Salado", "categoria": "frutos secos", "precio": 0, "imagen": "img/mani.jpg" },
     { "id": 87, "nombre": "Mani Repelado Tostado", "categoria": "frutos secos", "precio": 10000, "imagen": "img/mani.jpg" },
     { "id": 88, "nombre": "Mani con cascara", "categoria": "frutos secos", "precio": 12000, "imagen": "img/mani_cascara.jpg" },
-   // { "id": 89, "nombre": "Garrapiñada de Mani", "categoria": "frutos secos", "precio": 0, "imagen": "img/mani_crudo.jpg" },
-   // { "id": 90, "nombre": "Garrapiñada de Almendras", "categoria": "frutos secos", "precio": 0, "imagen": "img/garrapiñada_de_almendras.jpg" },
+ 
     { "id": 91, "nombre": "Granolas", "categoria": "frutos secos", "precio": 7200, "imagen": "img/granola.jpg" },
     { "id": 92, "nombre": "Pasas de Uva Morocha", "categoria": "frutos secos", "precio": 6000, "imagen": "img/pasa-negra.jpg" },
     { "id": 93, "nombre": "Avena", "categoria": "semillas", "precio": 4000, "imagen": "img/avena.jpg" },
