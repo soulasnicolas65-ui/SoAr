@@ -90,22 +90,22 @@ const productos = [
     { "id": 93, "nombre": "Avena", "categoria": "semillas", "precio": 4000, "imagen": "img/avena.jpg" },
     { "id": 94, "nombre": "Mijo", "categoria": "semillas", "precio": 4000, "imagen": "img/mijo.jpg" },
     { "id": 95, "nombre": "Chia", "categoria": "semillas", "precio": 11000, "imagen": "img/chia.jpg" },
-    { "id": 96, "nombre": "Te Verde", "categoria": "Otros", "precio": 15000, "imagen": "img/te_verde.jpg" },
-    { "id": 97, "nombre": "Cacao Amargo Comun", "categoria": "Otros", "precio": 20000, "imagen": "img/cacao_amargo_comun.jpg" },
+    { "id": 96, "nombre": "Te Verde", "categoria": "varios", "precio": 15000, "imagen": "img/te_verde.jpg" },
+    { "id": 97, "nombre": "Cacao Amargo Comun", "categoria": "varios", "precio": 20000, "imagen": "img/cacao_amargo_comun.jpg" },
     { "id": 98, "nombre": "Copos de Maiz", "categoria": "cereales", "precio": 8000, "imagen": "img/copos_de_maiz.jpg" },
-    { "id": 99, "nombre": "Aceite de Coco Neutro 360", "categoria": "Otros", "precio": 85000, "imagen": "img/aceite_de_coco_neutro_360.jpg" },
-    { "id": 100, "nombre": "Galletita Boccone", "categoria": "Otros", "precio": 20000, "imagen": "img/galletita_boccone.jpg" },
-    { "id": 101, "nombre": "Falafel", "categoria": "Otros", "precio": 28000, "imagen": "img/falafel.jpg" },
-    { "id": 102, "nombre": "Humus", "categoria": "Otros", "precio": 25000, "imagen": "img/humus.jpg" },
-    { "id": 103, "nombre": "Hamburguesa", "categoria": "Otros", "precio": 28000, "imagen": "img/hamburguesa.jpg" },
-    { "id": 104, "nombre": "Buñuelos de Espinaca", "categoria": "Otros", "precio": 35000, "imagen": "img/buñuelos_de_espinaca.jpg" },
-    { "id": 105, "nombre": "Sal Marina Fina", "categoria": "otros", "precio": 4500, "imagen": "img/sal_marina_fina.jpg" },
+    { "id": 99, "nombre": "Aceite de Coco Neutro 360", "categoria": "varios", "precio": 85000, "imagen": "img/aceite_de_coco_neutro_360.jpg" },
+    { "id": 100, "nombre": "Galletita Boccone", "categoria": "varios", "precio": 20000, "imagen": "img/galletita_boccone.jpg" },
+    { "id": 101, "nombre": "Falafel", "categoria": "varios", "precio": 28000, "imagen": "img/falafel.jpg" },
+    { "id": 102, "nombre": "Humus", "categoria": "varios", "precio": 25000, "imagen": "img/humus.jpg" },
+    { "id": 103, "nombre": "Hamburguesa", "categoria": "varios", "precio": 28000, "imagen": "img/hamburguesa.jpg" },
+    { "id": 104, "nombre": "Buñuelos de Espinaca", "categoria": "varios", "precio": 35000, "imagen": "img/buñuelos_de_espinaca.jpg" },
+    { "id": 105, "nombre": "Sal Marina Fina", "categoria": "varios", "precio": 4500, "imagen": "img/sal_marina_fina.jpg" },
     { "id": 106, "nombre": "Pasta de mani", "categoria": "frutos secos", "precio": 32000, "imagen": "img/pasta_de_mani.jpg" },
-    { "id": 107, "nombre": "Levadura", "categoria": "Otros", "precio": 12000, "imagen": "img/levadura.jpg" },
-    { "id": 108, "nombre": "Queso Crema Light 190g", "categoria": "Otros", "precio": 26000, "imagen": "img/queso_crema_light_190g.jpg" },
-    { "id": 109, "nombre": "Queso Crema 290g", "categoria": "Otros", "precio": 32000, "imagen": "img/queso_crema_290g.jpg" },
-    { "id": 110, "nombre": "Queso Cremoso", "categoria": "Otros", "precio": 110000, "imagen": "img/queso_cremoso.jpg" },
-    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "Otros", "precio": 23000, "imagen": "img/yogurt_bebible_900g.jpg" }
+    { "id": 107, "nombre": "Levadura", "categoria": "varios", "precio": 12000, "imagen": "img/levadura.jpg" },
+    { "id": 108, "nombre": "Queso Crema Light 190g", "categoria": "varios", "precio": 26000, "imagen": "img/queso_crema_light_190g.jpg" },
+    { "id": 109, "nombre": "Queso Crema 290g", "categoria": "varios", "precio": 32000, "imagen": "img/queso_crema_290g.jpg" },
+    { "id": 110, "nombre": "Queso Cremoso", "categoria": "varios", "precio": 110000, "imagen": "img/queso_cremoso.jpg" },
+    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 23000, "imagen": "img/yogurt_bebible_900g.jpg" }
 
 ];
 
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
     let touchStartX = 0;
     let touchEndX = 0;
-    const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas','cereales','varios'];
+  const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas', 'cereales', 'varios'];
 
     document.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
