@@ -262,42 +262,39 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCatalog(filtrados);
     }
 
-// Manejo inteligente de solapas con filtro de movimiento diagonal
-tabChips.forEach(btn => {
-    let startX = 0;
-    let startY = 0;
+    // Manejo inteligente de solapas con filtro de movimiento diagonal
+    tabChips.forEach(btn => {
+        let startX = 0;
+        let startY = 0;
 
-    btn.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    }, { passive: true });
+        btn.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }, { passive: true });
 
-    btn.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        
-        const diffX = Math.abs(endX - startX);
-        const diffY = Math.abs(endY - startY);
+        btn.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            
+            const diffX = Math.abs(endX - startX);
+            const diffY = Math.abs(endY - startY);
 
-        // Si el desplazamiento total (incluso en diagonal) fue mayor a 40px, 
-        // significa que el usuario estaba haciendo scroll y se descarta el cambio de categoría.
-        if (diffX < 40 && diffY < 40) {
+            if (diffX < 40 && diffY < 40) {
+                tabChips.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                categoriaActual = btn.getAttribute('data-categoria');
+                filtrarProductos();
+            }
+        });
+
+        btn.addEventListener('click', (e) => {
+            if (!e.detail) return;
             tabChips.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            categoriaActual = btn.getAttribute('data-categoria');
+            e.currentTarget.classList.add('active');
+            categoriaActual = e.currentTarget.getAttribute('data-categoria');
             filtrarProductos();
-        }
+        });
     });
-
-    // Mantenemos el evento click tradicional para computadoras
-    btn.addEventListener('click', (e) => {
-        if (!e.detail) return; // Evita doble disparo en algunos dispositivos táctiles
-        tabChips.forEach(b => b.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        categoriaActual = e.currentTarget.getAttribute('data-categoria');
-        filtrarProductos();
-    });
-});
 
     if(buscador) {
         buscador.addEventListener('input', filtrarProductos);
@@ -349,54 +346,51 @@ tabChips.forEach(btn => {
         }
     }
 
-   function initCardEvents() {
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    const select = card.querySelector('.weight-select');
-    const priceEl = card.querySelector('.product-price');
-    const btnAdd = card.querySelector('.btn-add');
-    const productName = card.querySelector('h2').textContent;
-    const basePrice = parseFloat(card.getAttribute('data-base-price'));
+    function initCardEvents() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const select = card.querySelector('.weight-select');
+            const priceEl = card.querySelector('.product-price');
+            const btnAdd = card.querySelector('.btn-add');
+            const productName = card.querySelector('h2').textContent;
+            const basePrice = parseFloat(card.getAttribute('data-base-price'));
 
-    if (select) {
-      // Producto con peso variable (por gramaje/kilo)
-      function updatePrice() {
-        const weight = parseInt(select.value);
-        let calculatedPrice = (basePrice * weight) / 1000;
-        priceEl.textContent = `$ ${Math.round(calculatedPrice).toLocaleString('es-AR')}`;
-      }
-      select.addEventListener('change', updatePrice);
-      select.value = "100";
-      updatePrice();
+            if (select) {
+                function updatePrice() {
+                    const weight = parseInt(select.value);
+                    let calculatedPrice = (basePrice * weight) / 1000;
+                    priceEl.textContent = `$ ${Math.round(calculatedPrice).toLocaleString('es-AR')}`;
+                }
+                select.addEventListener('change', updatePrice);
+                select.value = "100";
+                updatePrice();
 
-      btnAdd.addEventListener('click', () => {
-        const weightValue = parseInt(select.value);
-        const weightText = select.options[select.selectedIndex].text;
-        let itemPrice = weightValue === 100 ? basePrice / 10 : (basePrice * weightValue) / 1000;
-        
-        cart.push({
-          id: Date.now() + Math.random(),
-          name: productName,
-          weight: weightText,
-          price: itemPrice
+                btnAdd.addEventListener('click', () => {
+                    const weightValue = parseInt(select.value);
+                    const weightText = select.options[select.selectedIndex].text;
+                    let itemPrice = weightValue === 100 ? basePrice / 10 : (basePrice * weightValue) / 1000;
+                    
+                    cart.push({
+                        id: Date.now() + Math.random(),
+                        name: productName,
+                        weight: weightText,
+                        price: itemPrice
+                    });
+                    updateCartUI();
+                });
+            } else {
+                btnAdd.addEventListener('click', () => {
+                    cart.push({
+                        id: Date.now() + Math.random(),
+                        name: productName,
+                        weight: '1 unidad',
+                        price: basePrice
+                    });
+                    updateCartUI();
+                });
+            }
         });
-        updateCartUI();
-      });
-
-    } else {
-      // Producto de unidad fija (sin selector)
-      btnAdd.addEventListener('click', () => {
-        cart.push({
-          id: Date.now() + Math.random(),
-          name: productName,
-          weight: '1 unidad',
-          price: basePrice
-        });
-        updateCartUI();
-      });
     }
-  });
-}
 
     if(btnWhatsapp) {
         btnWhatsapp.addEventListener('click', () => {
@@ -414,122 +408,15 @@ tabChips.forEach(btn => {
         });
     }
 
-    // --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
-    let touchStartX = 0;
-    let touchEndX = 0;
-  const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas', 'cereales', 'varios'];
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderCatalog();
-  setupEventListeners();
+    // Renderizado inicial del catálogo completo
+    renderCatalog(productos);
 });
-
-function renderCatalog(productosAMostrar = productos) {
-  const grid = document.getElementById('grid-productos');
-  if (!grid) return;
-  grid.innerHTML = '';
-  
-  if (productosAMostrar.length === 0) {
-    grid.innerHTML = '<p class="no-results">No se encontraron productos.</p>';
-    return;
-  }
-
-  productosAMostrar.forEach(producto => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <img src="${producto.imagen}" alt="${producto.nombre}">
-      <h3>${producto.nombre}</h3>
-      <p class="precio">$${producto.precio.toLocaleString()}</p>
-      <button onclick="agregarAlCarro(${producto.id})">Agregar</button>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-function filtrarProductos() {
-  const input = document.getElementById('search-input');
-  const query = input ? input.value.toLowerCase() : '';
-  
-  let filtrados = productos.filter(p => {
-    const coincideTexto = p.nombre.toLowerCase().includes(query) || p.descripcion.toLowerCase().includes(query);
-    const coincideCategoria = categoriaActual === 'todos' || p.categoria === categoriaActual;
-    return coincideTexto && coincideCategoria;
-  });
-
-  renderCatalog(filtrados);
-}
-
-function setupEventListeners() {
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) {
-    searchInput.addEventListener('input', filtrarProductos);
-  }
-}
-
-// --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
-let touchStartX = 0;
-let touchEndX = 0;
-const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas', 'cereales', 'varios'];
-
-document.addEventListener('touchstart', e => {
-  touchStartX = e.changedTouches[0].screenX;
-}, false);
-
-document.addEventListener('touchend', e => {
-  touchEndX = e.changedTouches[0].screenX;
-  manejarSwipe();
-}, false);
-
-function manejarSwipe() {
-  const umbralSwipe = 50;
-  if (touchEndX < touchStartX - umbralSwipe) {
-    cambiarCategoriaSiguiente(1);
-  }
-  if (touchEndX > touchStartX + umbralSwipe) {
-    cambiarCategoriaSiguiente(-1);
-  }
-}
-
-function cambiarCategoriaSiguiente(direccion) {
-  let indexActual = categoriasDisponibles.indexOf(categoriaActual);
-  if (indexActual === -1) indexActual = 0;
-  let nuevoIndex = indexActual + direccion;
-  
-  if (nuevoIndex >= categoriasDisponibles.length) nuevoIndex = 0;
-  if (nuevoIndex < 0) nuevoIndex = categoriasDisponibles.length - 1;
-  
-  categoriaActual = categoriasDisponibles[nuevoIndex];
-  
-  const grid = document.getElementById('grid-productos');
-  if (grid) {
-    grid.style.opacity = '0';
-    grid.style.transform = 'translateY(10px)';
-    grid.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-  }
-
-  setTimeout(() => {
-    tabChips.forEach(btn => {
-      if (btn.getAttribute('data-categoria') === categoriaActual) {
-        btn.classList.add('active');
-        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      } else {
-        btn.classList.remove('active');
-      }
-    });
-    filtrarProductos();
-    if (grid) {
-      grid.style.opacity = '1';
-      grid.style.transform = 'translateY(0)';
-    }
-  }, 150);
-}
 
 // Registro del Service Worker para PWA
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((reg) => console.log('Service Worker registrado con éxito:', reg.scope))
-      .catch((err) => console.log('Error al registrar el Service Worker:', err));
-  });
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('Service Worker registrado con éxito:', reg.scope))
+            .catch((err) => console.log('Error al registrar el Service Worker:', err));
+    });
 }
