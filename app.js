@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
     let touchStartX = 0;
     let touchEndX = 0;
-    const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'varios'];
+    const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas','cereales','varios'];
 
     document.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
