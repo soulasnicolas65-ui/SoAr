@@ -72,17 +72,17 @@ const productos = [
     { "id": 77, "nombre": "Avellanas grandes", "categoria": "frutos secos", "precio": 25000, "imagen": "img/avellana.jpg" },
     { "id": 78, "nombre": "Castañas de Caju", "categoria": "frutos secos", "precio": 27000, "imagen": "img/castaña.jpg" },
   
-    { "id": 81, "nombre": "Nueces Chandler Extra Light Mariposa", "categoria": "frutos secos", "precio": 27000, "imagen": "img/nuez.jpg" },
+    { "id": 81, "nombre": "Nueces Chandler Extra Light Mariposa", "categoria": "frutos secos", "precio": 23000, "imagen": "img/nuez.jpg" },
   
     { "id": 83, "nombre": "Pistachos (con cascara salados)", "categoria": "frutos secos", "precio": 90000, "imagen": "img/pistacho-cascara.jpg" },
     { "id": 84, "nombre": "Pistachos naturales pelados", "categoria": "frutos secos", "precio": 160000, "imagen": "img/pistacho-natural.jpg" },
-    { "id": 85, "nombre": "Mani Crudo (para hacer garrapiñada)", "categoria": "frutos secos", "precio": 4500, "imagen": "img/mani_crudo.jpg" },
+    { "id": 85, "nombre": "Mani Crudo (para hacer garrapiñada)", "categoria": "frutos secos", "precio": 10000, "imagen": "img/mani_crudo.jpg" },
     { "id": 86, "nombre": "Mani Repelado Salado", "categoria": "frutos secos", "precio": 10000, "imagen": "img/mani.jpg" },
     { "id": 87, "nombre": "Mani Repelado Tostado", "categoria": "frutos secos", "precio": 10000, "imagen": "img/mani.jpg" },
     { "id": 88, "nombre": "Mani con cascara", "categoria": "frutos secos", "precio": 12000, "imagen": "img/mani_cascara.jpg" },
  
     { "id": 91, "nombre": "Granolas", "categoria": "frutos secos", "precio": 8000, "imagen": "img/granola.jpg" },
-    { "id": 92, "nombre": "Pasas de Uva Morocha", "categoria": "frutos secos", "precio": 8000, "imagen": "img/pasa-negra.jpg" },
+    { "id": 92, "nombre": "Pasas de Uva Morocha", "categoria": "frutos secos", "precio": 16000, "imagen": "img/pasa-negra.jpg" },
     { "id": 93, "nombre": "Avena", "categoria": "semillas", "precio": 5000, "imagen": "img/avena.jpg" },
     { "id": 94, "nombre": "Mijo", "categoria": "semillas", "precio": 4000, "imagen": "img/mijo.jpg" },
     { "id": 95, "nombre": "Chia", "categoria": "semillas", "precio": 11000, "imagen": "img/chia.jpg" },
