@@ -475,48 +475,63 @@ tabChips.forEach(btn => {
         }, 150);
     }
 
-  function renderCatalog(items) {
-  let grid = document.getElementById('grid-productos');
-  if (!grid) return;
-  grid.innerHTML = '';
+// --- Lógica de deslizamiento táctil (Swipe) con transición suave ---
+let touchStartX = 0;
+let touchEndX = 0;
+const categoriasDisponibles = ['todos', 'condimentos', 'frutos secos', 'semillas', 'cereales', 'varios'];
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  manejarSwipe();
+}, false);
+
+function manejarSwipe() {
+  const umbralSwipe = 50;
+  if (touchEndX < touchStartX - umbralSwipe) {
+    cambiarCategoriaSiguiente(1);
+  }
+  if (touchEndX > touchStartX + umbralSwipe) {
+    cambiarCategoriaSiguiente(-1);
+  }
+}
+
+function cambiarCategoriaSiguiente(direccion) {
+  let indexActual = categoriasDisponibles.indexOf(categoriaActual);
+  if (indexActual === -1) indexActual = 0;
+  let nuevoIndex = indexActual + direccion;
   
-  if (items.length === 0) {
-    grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 30px; color:#777;">No se encontraron productos.</p>`;
-    return;
+  if (nuevoIndex >= categoriasDisponibles.length) nuevoIndex = 0;
+  if (nuevoIndex < 0) nuevoIndex = categoriasDisponibles.length - 1;
+  
+  categoriaActual = categoriasDisponibles[nuevoIndex];
+  
+  const grid = document.getElementById('grid-productos');
+  if (grid) {
+    grid.style.opacity = '0';
+    grid.style.transform = 'translateY(10px)';
+    grid.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
   }
 
-  items.forEach(prod => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.setAttribute('data-base-price', prod.precio);
-    
-    // Lógica booleana para decidir si muestra el selector de peso o unidad fija
-    const selectorHTML = prod.pesoVariable 
-      ? `<select class="weight-select">
-           <option value="100" selected>100 gr</option>
-           <option value="250">250 gr</option>
-           <option value="500">500 gr</option>
-           <option value="1000">1 kg</option>
-         </select>`
-      : `<span class="fixed-unit" style="font-size: 0.9rem; color: #666; display: block; margin-bottom: 10px;">Unidad (1 porción / envase)</span>`;
-
-    card.innerHTML = `
-      <div class="card-image">
-        <img src="${prod.imagen || 'img/default.jpg'}" alt="${prod.nombre}" loading="lazy">
-      </div>
-      <div class="card-content">
-        <h2>${prod.nombre}</h2>
-        <p class="product-price">$ ${prod.precio.toLocaleString('es-AR')}</p>
-        ${selectorHTML}
-        <button class="btn-add">Agregar al carrito</button>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-
-  initCardEvents();
+  setTimeout(() => {
+    tabChips.forEach(btn => {
+      if (btn.getAttribute('data-categoria') === categoriaActual) {
+        btn.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    filtrarProductos();
+    if (grid) {
+      grid.style.opacity = '1';
+      grid.style.transform = 'translateY(0)';
+    }
+  }, 150);
 }
-});
 
 // Registro del Service Worker para PWA
 if ('serviceWorker' in navigator) {
