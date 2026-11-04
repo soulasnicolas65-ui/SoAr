@@ -420,3 +420,45 @@ if ('serviceWorker' in navigator) {
             .catch((err) => console.log('Error al registrar el Service Worker:', err));
     });
 }
+
+// --- Lógica del cartel de instalación personalizado ---
+let deferredPrompt;
+const installBanner = document.getElementById('custom-install-banner');
+const installBtn = document.getElementById('accept-install');
+const closeInstallBtn = document.getElementById('close-install');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Previene que aparezca el mini-infobar automático del navegador
+  e.preventDefault();
+  // Guarda el evento para dispararlo cuando el usuario toque tu botón
+  deferredPrompt = e;
+  
+  // Muestra tu cartel personalizado solo si el usuario no lo cerró antes
+  if (!localStorage.getItem('pwaInstalled')) {
+    if (installBanner) installBanner.style.display = 'flex';
+  }
+});
+
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      // Muestra la ventana nativa de instalación del sistema
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('El usuario aceptó instalar la PWA');
+        localStorage.setItem('pwaInstalled', 'true');
+      }
+      deferredPrompt = null;
+      if (installBanner) installBanner.style.display = 'none';
+    }
+  });
+}
+
+if (closeInstallBtn) {
+  closeInstallBtn.addEventListener('click', () => {
+    if (installBanner) installBanner.style.display = 'none';
+    // Oculta el cartel por un tiempo o guárdalo para que no vuelva a molestar
+    localStorage.setItem('pwaInstalled', 'true');
+  });
+}
