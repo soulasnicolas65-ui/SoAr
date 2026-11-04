@@ -1,4 +1,4 @@
- const productos = [
+const productos = [
   { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 20000, "imagen": "img/aji_cayena.jpg",
     pesoVariable: true },
   { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 16000, "imagen": "img/aji-molidop.jpg",
@@ -116,7 +116,7 @@
     pesoVariable: true },
   { "id": 63, "nombre": "Remolacha en Polvo", "categoria": "condimentos", "precio": 20000,  "imagen": "img/remolacha.jpg",
     pesoVariable: true  },
-  { "id": 64, "nombre": "Salvia", "categoria": "condimentos", "precio": 17000,  },
+  { "id": 64, "nombre": "Salvia", "categoria": "condimentos", "precio": 17000, pesoVariable: true },
   { "id": 65, "nombre": "Sopa juliana", "categoria": "condimentos", "precio": 24000,   "imagen": "img/sopa.jpg",
     pesoVariable: true },
   { "id": 66, "nombre": "Tomate en Polvo", "categoria": "condimentos", "precio": 40000,   "imagen": "img/tomate.jpg",
@@ -197,7 +197,6 @@
     pesoVariable: false  },
     { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt_bebible_900g.jpg",
     pesoVariable: false  }
-
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -230,6 +229,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'card';
             card.setAttribute('data-base-price', prod.precio);
+            card.setAttribute('data-peso-variable', prod.pesoVariable);
+
+            // Renderizado condicional según el booleano pesoVariable
+            let selectorHtml = '';
+            if (prod.pesoVariable) {
+                selectorHtml = `
+                    <select class="weight-select">
+                        <option value="100" selected>100 gr</option>
+                        <option value="250">250 gr</option>
+                        <option value="500">500 gr</option>
+                        <option value="1000">1 kg</option>
+                    </select>
+                `;
+            }
+
             card.innerHTML = `
                 <div class="card-image">
                     <img src="${prod.imagen || 'img/default.jpg'}" alt="${prod.nombre}" loading="lazy">
@@ -237,12 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-content">
                     <h2>${prod.nombre}</h2>
                     <p class="product-price">$ ${prod.precio.toLocaleString('es-AR')}</p>
-                    <select class="weight-select">
-                        <option value="100" selected>100 gr</option>
-                        <option value="250">250 gr</option>
-                        <option value="500">500 gr</option>
-                        <option value="1000">1 kg</option>
-                    </select>
+                    ${selectorHtml}
                     <button class="btn-add">Agregar al carrito</button>
                 </div>
             `;
@@ -354,8 +363,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const btnAdd = card.querySelector('.btn-add');
             const productName = card.querySelector('h2').textContent;
             const basePrice = parseFloat(card.getAttribute('data-base-price'));
+            const pesoVariable = card.getAttribute('data-peso-variable') === 'true';
 
-            if (select) {
+            if (pesoVariable && select) {
                 function updatePrice() {
                     const weight = parseInt(select.value);
                     let calculatedPrice = (basePrice * weight) / 1000;
@@ -379,6 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateCartUI();
                 });
             } else {
+                // Lógica para productos por unidad fija (ej: aceite de coco, quesos enteros, galletitas)
                 btnAdd.addEventListener('click', () => {
                     cart.push({
                         id: Date.now() + Math.random(),
@@ -428,12 +439,9 @@ const installBtn = document.getElementById('accept-install');
 const closeInstallBtn = document.getElementById('close-install');
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Previene que aparezca el mini-infobar automático del navegador
   e.preventDefault();
-  // Guarda el evento para dispararlo cuando el usuario toque tu botón
   deferredPrompt = e;
   
-  // Muestra tu cartel personalizado solo si el usuario no lo cerró antes
   if (!localStorage.getItem('pwaInstalled')) {
     if (installBanner) installBanner.style.display = 'flex';
   }
@@ -442,11 +450,9 @@ window.addEventListener('beforeinstallprompt', (e) => {
 if (installBtn) {
   installBtn.addEventListener('click', async () => {
     if (deferredPrompt) {
-      // Muestra la ventana nativa de instalación del sistema
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
-        console.log('El usuario aceptó instalar la PWA');
         localStorage.setItem('pwaInstalled', 'true');
       }
       deferredPrompt = null;
@@ -458,7 +464,6 @@ if (installBtn) {
 if (closeInstallBtn) {
   closeInstallBtn.addEventListener('click', () => {
     if (installBanner) installBanner.style.display = 'none';
-    // Oculta el cartel por un tiempo o guárdalo para que no vuelva a molestar
     localStorage.setItem('pwaInstalled', 'true');
   });
 }
