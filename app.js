@@ -1,4 +1,4 @@
-const productos = [
+ const productos = [
   { "id": 1, "nombre": "Aji Cayena Roja o Amarilla", "categoria": "condimentos", "precio": 20000, "imagen": "img/aji_cayena.jpg",
     pesoVariable: true },
   { "id": 2, "nombre": "Aji Molido Seleccion", "categoria": "condimentos", "precio": 16000, "imagen": "img/aji-molidop.jpg",
