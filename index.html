@@ -86,5 +86,21 @@
   </footer>
 
   <script src="app.js"></script>
+
+<!-- Cartel flotante de instalación personalizado -->
+<div id="custom-install-banner" style="display: none; position: fixed; bottom: 20px; left: 20px; right: 20px; background: #2c5e3b; color: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; align-items: center; justify-content: space-between; font-family: sans-serif;">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <span style="font-size: 24px;">🌱</span>
+    <div>
+      <strong style="font-size: 15px; display: block;">Instalá SoAr Tienda Natural</strong>
+      <span style="font-size: 13px; opacity: 0.9;">Accedé más rápido como una aplicación.</span>
+    </div>
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <button id="accept-install" style="background: white; color: #2c5e3b; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; cursor: pointer;">Instalar</button>
+    <button id="close-install" style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.4); padding: 8px 10px; border-radius: 6px; cursor: pointer;">✕</button>
+  </div>
+</div>
+  
 </body>
 </html>
