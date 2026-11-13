@@ -196,7 +196,25 @@ const productos = [
     { "id": 110, "nombre": "Queso Cremoso", "categoria": "varios", "precio": 11000, "imagen": "img/queso_cremoso.jpg",
     pesoVariable: false  },
     { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt_bebible_900g.jpg",
-    pesoVariable: false  }
+    pesoVariable: false  },
+    { "id": 112, "nombre": "Almendra con Miel Y Coco", "categoria": "frutos secos", "precio": 50000, "imagen": "img/almendra-coco.jpg",
+    pesoVariable: true },
+  { "id": 113, "nombre": "Almendra Bañada en Chocolate y Cacao Amargo", "categoria": "frutos secos", "precio": 46000, "imagen": "img/almendra-cacao.jpg",
+    pesoVariable: true },
+  { "id": 114, "nombre": "Mix Caribeño", "categoria": "frutos secos", "precio": 35000, "imagen": "img/mix-caribeño.jpg" ,
+    pesoVariable: true},
+  { "id": 115, "nombre": "Mani Tostado con Miel,Sal,Pimienta y Limon", "categoria": "frutos secos", "precio": 25000, "imagen": "img/mani-pimienta.jpg",
+    pesoVariable: true },
+  { "id": 116, "nombre": "Pretzel Bañado en Chocolate", "categoria": "cereales", "precio": 36000, "imagen": "img/pretzel-choco.jpg",
+    pesoVariable: true },
+  { "id": 117, "nombre": "Granola Vainilla y Coco con Choc Blanco", "categoria": "cereales", "precio": 42000,"imagen": "img/granola-vainilla.jpg",
+    pesoVariable: false  },
+  { "id": 118, "nombre": "Granola Frutilla y Coco", "categoria": "cereales", "precio": 42000, "imagen": "img/granola-frutilla.jpg",
+    pesoVariable: false },
+  { "id": 119, "nombre": "Granola con Chocolate", "categoria": "cereales", "precio": 42000, "imagen": "img/granola-choco.jpg",
+    pesoVariable: false },
+  { "id": 120, "nombre": "Quinoa al Cacao", "categoria": "cereales", "precio": 28000, "imagen": "img/quinoa-cacao.jpg",
+    pesoVariable: true }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
