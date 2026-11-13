@@ -156,7 +156,7 @@ const productos = [
     { "id": 88, "nombre": "Mani con cascara", "categoria": "frutos secos", "precio": 12000, "imagen": "img/mani_cascara.jpg",
     pesoVariable: true },
  
-    { "id": 91, "nombre": "Granolas", "categoria": "frutos secos", "precio": 9000, "imagen": "img/granola.jpg",
+    { "id": 91, "nombre": "Granola Quinoa Pop y Copos de Maiz 250g", "categoria": "frutos secos", "precio": 9000, "imagen": "img/granola.jpg",
     pesoVariable: true },
     { "id": 92, "nombre": "Pasas de Uva Morocha", "categoria": "frutos secos", "precio": 16000, "imagen": "img/pasa-negra.jpg",
     pesoVariable: true },
