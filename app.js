@@ -310,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return coincideCategoria && coincideTexto;
         });
         renderCatalog(filtrados);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Manejo inteligente de solapas con filtro de movimiento diagonal
