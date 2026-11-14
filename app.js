@@ -214,7 +214,7 @@ const productos = [
   { "id": 119, "nombre": "Granola con Chocolate 250g", "categoria": "cereales", "precio": 4200, "imagen": "img/granola-choco.jpg",
     pesoVariable: false },
   { "id": 120, "nombre": "Quinoa al Cacao", "categoria": "cereales", "precio": 28000, "imagen": "img/quinoa-cacao.jpg",
-    pesoVariable: true }
+    pesoVariable: true },
    { "id": 121, "nombre": "Almohaditas de Avellana", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-avellana.jpg",
     pesoVariable: true },
     { "id": 122, "nombre": "Almohaditas de Chocolate", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-chocolate.jpg",
@@ -236,7 +236,7 @@ const productos = [
   { "id": 130, "nombre": "Harina de Avena 500g", "categoria": "varios", "precio": 3000,"imagen": "img/harina-avena.jpg",
     pesoVariable: false  },
   { "id": 131, "nombre": "Harina de Coco", "categoria": "varios", "precio": 16000, "imagen": "img/harina-coco.jpg",
-    pesoVariable: true },
+    pesoVariable: true }
 
 ];
 
