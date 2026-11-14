@@ -215,6 +215,29 @@ const productos = [
     pesoVariable: false },
   { "id": 120, "nombre": "Quinoa al Cacao", "categoria": "cereales", "precio": 28000, "imagen": "img/quinoa-cacao.jpg",
     pesoVariable: true }
+   { "id": 121, "nombre": "Almohaditas de Avellana", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-avellana.jpg",
+    pesoVariable: true },
+    { "id": 122, "nombre": "Almohaditas de Chocolate", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-chocolate.jpg",
+    pesoVariable: true },
+    { "id": 123, "nombre": "Almohaditas de Frutilla", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-frutilla.jpg",
+    pesoVariable: true  },
+    { "id": 124, "nombre": "Almohaditas de Limon", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-limon.jpg",
+    pesoVariable: true  },
+    { "id": 125, "nombre": "Almohaditas de Salvado", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-salvado.jpg",
+    pesoVariable: true },
+  { "id": 126, "nombre": "Banana Deshidratada", "categoria": "frutos secos", "precio": 28000, "imagen": "img/banana.jpg",
+    pesoVariable: true },
+  { "id": 127, "nombre": "Quinoa PoP", "categoria": "cereales", "precio": 11000, "imagen": "img/quinoa-pop.jpg" ,
+    pesoVariable: true},
+  { "id": 128, "nombre": "Trigo Inflado", "categoria": "cereales", "precio": 11000, "imagen": "img/trigo-inflado.jpg",
+    pesoVariable: true },
+  { "id": 129, "nombre": "Harina Paraguaya 600g", "categoria": "varios", "precio": 3000, "imagen": "img/harina-maiz.jpg",
+    pesoVariable: false },
+  { "id": 130, "nombre": "Harina de Avena 500g", "categoria": "varios", "precio": 3000,"imagen": "img/harina-avena.jpg",
+    pesoVariable: false  },
+  { "id": 131, "nombre": "Harina de Coco", "categoria": "varios", "precio": 16000, "imagen": "img/harina-coco.jpg",
+    pesoVariable: true },
+
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
