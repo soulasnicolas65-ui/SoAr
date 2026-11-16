@@ -469,13 +469,16 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCatalog(productos);
 });
 
-// Registro del Service Worker para PWA
+// --- Registro del Service Worker mejorado para evitar caché ---
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((reg) => console.log('Service Worker registrado con éxito:', reg.scope))
-            .catch((err) => console.log('Error al registrar el Service Worker:', err));
-    });
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
+      .then((reg) => {
+        console.log('Service Worker registrado con éxito:', reg.scope);
+        reg.update();
+      })
+      .catch((err) => console.log('Error al registrar el Service Worker:', err));
+  });
 }
 
 // --- Lógica del cartel de instalación personalizado ---
