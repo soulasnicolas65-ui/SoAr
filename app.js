@@ -237,9 +237,9 @@ const productos = [
     pesoVariable: false  },
   { "id": 131, "nombre": "Harina de Coco", "categoria": "varios", "precio": 16000, "imagen": "img/harina-coco.jpg",
     pesoVariable: true },
-   { "id": 132, "nombre": "Yogurt Natural Tregar x 280g", "categoria": "varios", "precio": 2500,"imagen": "img/yogurt-natural.jpg",
+   { "id": 132, "nombre": "Yogurt Natural Tregar x 280g", "categoria": "varios", "precio": 2800,"imagen": "img/yogurt-natural.jpg",
     pesoVariable: false  },
-  { "id": 133, "nombre": "Yogurt con Frutas Tregar x 140g", "categoria": "varios", "precio": 16000, "imagen": "img/yogurt-vasito.jpg",
+  { "id": 133, "nombre": "Yogurt con Frutas Tregar x 140g", "categoria": "varios", "precio": 1800, "imagen": "img/yogurt-vasito.jpg",
     pesoVariable: false }
 
 ];
