@@ -1,4 +1,5 @@
-// Service Worker básico para SoAr Tienda Natural
+
+// Service Worker para SoAr Tienda Natural - Siempre busca en la red para evitar precios viejos
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
@@ -8,10 +9,18 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Peticiones estándar de red
+  // Ignoramos peticiones que no sean GET (como extensiones del navegador, etc.)
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    fetch(event.request).catch(() => {
-      // Por si querés agregar soporte offline básico más adelante
-    })
+    fetch(event.request)
+      .then((networkResponse) => {
+        // Devuelve la respuesta fresca directo de GitHub Pages
+        return networkResponse;
+      })
+      .catch(() => {
+        // Por si el usuario se queda sin internet de golpe y necesita abrir la app
+        return caches.match(event.request);
+      })
   );
 });
