@@ -242,7 +242,10 @@ const productos = [
   { "id": 133, "nombre": "Yogurt con Frutas Tregar x 140g", "categoria": "varios", "precio": 1800, "imagen": "img/yogurt-vasito.jpg",
     pesoVariable: false, sinStock: false },
  { "id": 133, "nombre": "Yogurt Natural Tregar x 140g", "categoria": "varios", "precio": 1800, "imagen": "img/yogurt-sinazucar.jpg",
+    pesoVariable: false, sinStock: false },
+   { "id": 133, "nombre": "Yerba Mate Lapacho Rosa", "categoria": "varios", "precio": 5000, "imagen": "img/lapacho.jpg",
     pesoVariable: false, sinStock: false }
+  
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
