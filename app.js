@@ -195,7 +195,7 @@ const productos = [
     pesoVariable: false, sinStock: false  },
     { "id": 110, "nombre": "Queso Cremoso", "categoria": "varios", "precio": 11000, "imagen": "img/queso_cremoso.jpg",
     pesoVariable: false, sinStock: true },
-    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt_bebible.jpg",
+    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt-bebible.jpg",
     pesoVariable: false, sinStock: true },
     { "id": 112, "nombre": "Almendra con Miel Y Coco", "categoria": "frutos secos", "precio": 5000, "imagen": "img/almendra-coco.jpg",
     pesoVariable: false, sinStock: false },
