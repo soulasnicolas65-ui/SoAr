@@ -189,13 +189,13 @@ const productos = [
     { "id": 106, "nombre": "Pasta de mani", "categoria": "frutos secos", "precio": 3200, "imagen": "img/pasta-mani.jpg", pesoVariable: false, sinStock: false },
     { "id": 107, "nombre": "Levadura", "categoria": "varios", "precio": 1200, "imagen": "img/levadura.jpg",
     pesoVariable: false, sinStock: false  },
-    { "id": 108, "nombre": "Queso Crema Light 190g", "categoria": "varios", "precio": 2600, "imagen": "img/queso_crema_light_190g.jpg",
+    { "id": 108, "nombre": "Queso Crema Light 190g", "categoria": "varios", "precio": 2700, "imagen": "img/queso_crema_light_190g.jpg",
     pesoVariable: false, sinStock: false  },
-    { "id": 109, "nombre": "Queso Crema 290g", "categoria": "varios", "precio": 3200, "imagen": "img/queso_crema_290g.jpg",
+    { "id": 109, "nombre": "Queso Chatel 180g", "categoria": "varios", "precio": 2700, "imagen": "img/queso-chatel.jpg",
     pesoVariable: false, sinStock: false  },
     { "id": 110, "nombre": "Queso Cremoso", "categoria": "varios", "precio": 11000, "imagen": "img/queso_cremoso.jpg",
     pesoVariable: false, sinStock: true },
-    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt_bebible_900g.jpg",
+    { "id": 111, "nombre": "Yogurt bebible 900g", "categoria": "varios", "precio": 2300, "imagen": "img/yogurt_bebible.jpg",
     pesoVariable: false, sinStock: true },
     { "id": 112, "nombre": "Almendra con Miel Y Coco", "categoria": "frutos secos", "precio": 5000, "imagen": "img/almendra-coco.jpg",
     pesoVariable: false, sinStock: false },
@@ -240,8 +240,9 @@ const productos = [
    { "id": 132, "nombre": "Yogurt Natural Tregar x 280g", "categoria": "varios", "precio": 2800,"imagen": "img/yogurt-natural.jpg",
     pesoVariable: false, sinStock: false  },
   { "id": 133, "nombre": "Yogurt con Frutas Tregar x 140g", "categoria": "varios", "precio": 1800, "imagen": "img/yogurt-vasito.jpg",
+    pesoVariable: false, sinStock: false },
+ { "id": 133, "nombre": "Yogurt Natural Tregar x 140g", "categoria": "varios", "precio": 1800, "imagen": "img/yogurt-sinazucar.jpg",
     pesoVariable: false, sinStock: false }
-
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
