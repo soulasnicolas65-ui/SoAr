@@ -213,7 +213,7 @@ const productos = [
     pesoVariable: false, sinStock: false },
   { "id": 119, "nombre": "Granola con Chocolate 200g", "categoria": "cereales", "precio": 4200, "imagen": "img/granola-choco.jpg",
     pesoVariable: false, sinStock: false },
-  { "id": 120, "nombre": "Quinoa al Cacao", "categoria": "cereales", "precio": 28000, "imagen": "img/quinoa-cacao.jpg",
+  { "id": 120, "nombre": "Quinoa al Cacao", "categoria": "cereales", "precio": 2800, "imagen": "img/quinoa-cacao.jpg",
     pesoVariable: false, sinStock: false },
    { "id": 121, "nombre": "Almohaditas de Avellana", "categoria": "cereales", "precio": 16000, "imagen": "img/alm-avellana.jpg",
     pesoVariable: true, sinStock: false },
